@@ -1,26 +1,111 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-background-light: #f7f7f7;
+  --color-foreground-light: #1d1d1d;
+  
+  --color-background-dark: #121212;
+  --color-foreground-dark: #e0e0e0;
+ 
+
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  /* --primary-color: #3a8d99; */
+  /* --secondary-color: #f0a500; */
+  --color-avocado-100: oklch(0.99 0 0);
+  --color-avocado-200: oklch(0.98 0.04 113.22);
+  --color-avocado-300: oklch(0.94 0.11 115.03);
+  --color-avocado-400: oklch(0.92 0.19 114.08);
+  --color-avocado-500: oklch(0.84 0.18 117.33);
+  --color-avocado-600: oklch(0.53 0.12 118.34);
+
+ 
+  --color-primary:#275832  ;
+  --color-secondary:#212121;
+  --color-accent:#000;
+  --color-level:#180447;
+
+ 
+
+  --gradient-bg: linear-gradient(to bottom, #3a8d99, #f0a500);
+  
+ 
+  
+  --btn-gradient: linear-gradient(to right, #3a8d99, #f0a500);
+  --btn-gradient-hover: linear-gradient(to right, #f0a500, #3a8d99);
+  
+  --bg-gradient-layout: linear-gradient(to right, #e6f0f3, white);
+  --bg-gradient-home: linear-gradient(to top, #e6f0f3, #f0a500);
+  
 }
 
+
+.bg-custom-gradient {
+  background: linear-gradient(to right, #180447, #50993c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.custom-gradient {
+  background: linear-gradient(to right, white, #93c9e7, #48bb78);
+}
+
+
+.bg-gradient {
+  background: linear-gradient(to right, #ffffff, #001f3f, #3CB043);
+}
+
+.bg-custom-secondary {
+  background: linear-gradient(to top, #e6f0f3, #f0a500);
+}
+
+.bg-gradient-layout {
+  background: linear-gradient(to right, #e6f0f3, white);
+}
+
+.bg-gradient-home {
+  background: linear-gradient(to top, #e6f0f3, #f0a500);
+}
+
+.btn-gradient {
+  background-image: linear-gradient(to right, #3a8d99, #f0a500);
+  color: #fff;
+  font-weight: 500;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.75rem;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-gradient:hover {
+  background-image: linear-gradient(to right, #f0a500, #3a8d99);
+}
+
+/* Form Input Styling */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Media Query for Dark Mode */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-background: #121212;
+    --color-foreground: #e0e0e0;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #f7f7f7;
+  color: #1d1d1d;
+  font-family: 'Arial', Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
 }
