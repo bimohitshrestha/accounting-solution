@@ -12,7 +12,7 @@ const LinkButton = ({ link, title, icon }: LinkButtonProps) => {
     <a
       href={link}
       target="_blank"
-      className="bg-level w-full  text-white py-2 px-4 rounded flex items-center justify-center space-x-3 transition-colors duration-200 "
+      className="bg-level w-full  text-white py-3 px-6 rounded flex items-center justify-center space-x-3 transition-colors duration-200 "
     >
       {icon}
       <span className="text-sm">{title}</span>

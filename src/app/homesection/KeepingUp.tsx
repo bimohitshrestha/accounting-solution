@@ -1,5 +1,6 @@
 import ImageCarousel from "@/component/carousal/ImageCarousal";
 import ParagraphHeader from "@/component/header/ParagraphHeader";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { BsInstagram, BsYoutube } from "react-icons/bs";
@@ -57,9 +58,11 @@ const KeepingUp = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6">
-          <img
+          <Image
             src="/file.svg"
             alt="Company Logo or Document Icon"
+            width={40}
+            height={40}
             className="w-10 h-10"
           />
           <div className="text-center sm:text-left">

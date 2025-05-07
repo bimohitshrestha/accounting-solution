@@ -116,7 +116,7 @@ const Trust = () => {
                 ))}
               </div>
               <p className="text-gray-800 text-base line-clamp-3">
-                "{testimonial.message}"
+                {testimonial.message}
               </p>
             </div>
           ))}

@@ -3,19 +3,22 @@ import React, { useState } from "react";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import ButtonText from "../common/button/ButtonText";
 import { FaInstagram } from "react-icons/fa";
+import Image from "next/image";
 
 const images = [
-  "https://images.pexels.com/photos/15224943/pexels-photo-15224943/free-photo-of-waves-crashing-on-the-shore.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  "https://images.pexels.com/photos/15224943/pexels-photo-15224943/free-photo-of-waves-crashing-on-the-shore.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  "https://images.pexels.com/photos/15224943/pexels-photo-15224943/free-photo-of-waves-crashing-on-the-shore.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  "https://images.pexels.com/photos/15224943/pexels-photo-15224943/free-photo-of-waves-crashing-on-the-shore.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  "https://images.pexels.com/photos/15224943/pexels-photo-15224943/free-photo-of-waves-crashing-on-the-shore.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  "https://images.pexels.com/photos/15224943/pexels-photo-15224943/free-photo-of-waves-crashing-on-the-shore.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  "https://images.pexels.com/photos/15224943/pexels-photo-15224943/free-photo-of-waves-crashing-on-the-shore.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  "https://images.pexels.com/photos/15224943/pexels-photo-15224943/free-photo-of-waves-crashing-on-the-shore.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  "https://images.pexels.com/photos/15224943/pexels-photo-15224943/free-photo-of-waves-crashing-on-the-shore.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  "https://images.pexels.com/photos/15224943/pexels-photo-15224943/free-photo-of-waves-crashing-on-the-shore.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  "https://images.pexels.com/photos/15224943/pexels-photo-15224943/free-photo-of-waves-crashing-on-the-shore.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+  "/accountant.jpg",
+  "/accountant.jpg",
+  "/accountant.jpg",
+  "/accountant.jpg",
+  "/accountant.jpg",
+  "/accountant.jpg",
+  "/accountant.jpg",
+  "/accountant.jpg",
+  "/accountant.jpg",
+  "/accountant.jpg",
+  "/accountant.jpg",
+  "/accountant.jpg",
+  "/accountant.jpg",
 ];
 
 const IMAGES_PER_PAGE = 6;
@@ -48,10 +51,12 @@ const ImageCarousel = () => {
               key={startIndex + index}
               className="flex-shrink-0 w-52 h-60 overflow-hidden rounded-md shadow-md"
             >
-              <img
+              <Image
                 src={src}
                 alt={`Image ${startIndex + index + 1}`}
-                className="w-full h-full object-cover"
+                width={500}
+                height={300}
+                className="object-cover w-full h-full"
               />
             </div>
           ))}
