@@ -17,16 +17,14 @@ const Page = () => {
     dispatch(getBlogList());
   }, [dispatch]);
 
-  if (isLoadingBlogList) {
-    return (
-      <div className="p-8 text-center text-gray-500">
-        <span className="text-xl font-semibold">Loading Blog List...</span>
-      </div>
+  {
+    isLoadingBlogList && (
+      <div className="p-8 text-center text-gray-500">Loading Blog List...</div>
     );
   }
 
-  if (isError) {
-    return (
+  {
+    isError && (
       <div className="p-8 text-center text-red-600">
         <span className="text-xl font-semibold">
           Failed to load blog posts. Please try again later.

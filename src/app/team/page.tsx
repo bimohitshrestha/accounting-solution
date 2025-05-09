@@ -36,8 +36,15 @@ const Page = () => {
     dispatch(getTeamList());
   }, []);
 
-  if (isloadingServiceList) {
-    return (
+  // if (isloadingServiceList) {
+  //   return (
+  //     <div className="p-8 text-center text-gray-500">
+  //       Loading team members...
+  //     </div>
+  //   );
+  // }
+  {
+    isloadingServiceList && (
       <div className="p-8 text-center text-gray-500">
         Loading team members...
       </div>

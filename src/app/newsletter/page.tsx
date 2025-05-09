@@ -10,13 +10,19 @@ import Link from "next/link";
 const Page = () => {
   const dispatch = useAppDispatch();
   const { NewsList, isloadingNewsList } = useAppSelector((state) => state.news);
-
   useEffect(() => {
     dispatch(getNewsList());
   }, []);
 
-  if (isloadingNewsList) {
-    return (
+  // if (isloadingNewsList) {
+  //   return (
+  //     <div className="p-8 text-center text-gray-500">
+  //       Loading newsletters...
+  //     </div>
+  //   );
+  // }
+  {
+    isloadingNewsList && (
       <div className="p-8 text-center text-gray-500">
         Loading newsletters...
       </div>
