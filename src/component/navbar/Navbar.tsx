@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { BsInstagram } from "react-icons/bs";
 import {
@@ -13,11 +13,22 @@ import {
 } from "react-icons/fa";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { navItems } from "./NavItems";
+import { useAppSelector } from "@/hooks/useAppSelector";
+import { useAppDispatch } from "@/hooks/useAppDispatch";
+import { getServiceList } from "@/lib/features/services/serviceAction";
 
 const Navbar = () => {
   const pathname = usePathname();
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const { ServiceList } = useAppSelector((state) => state.service);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getServiceList());
+  }, []);
 
   const toggleSubMenu = (itemName: string) => {
     setOpenMenu(openMenu === itemName ? null : itemName);
@@ -80,34 +91,69 @@ const Navbar = () => {
                       : "bg-white hover:bg-green-400 hover:text-white text-black"
                   }`}
                 >
-                  {item.name}
-                  {item.subItems && (
-                    <span className="ml-2">
-                      {openMenu === item.name ? (
-                        <IoIosArrowUp />
-                      ) : (
-                        <IoIosArrowDown />
-                      )}
-                    </span>
-                  )}
+                  <Link
+                    href={item.subChild === false ? item.href : ""}
+                    className="flex items-center"
+                  >
+                    {item.name}
+                    {item.subChild !== false && (
+                      <span className="ml-2">
+                        {openMenu === item.name ? (
+                          <IoIosArrowUp />
+                        ) : (
+                          <IoIosArrowDown />
+                        )}
+                      </span>
+                    )}
+                  </Link>
                 </button>
 
-                {item.subItems && openMenu === item.name && (
+                {openMenu === item.name && (
                   <div className="absolute top-full left-0 bg-green-500 text-white shadow-lg w-44 z-50">
-                    {item.subItems.map((sub, index) => (
+                    {item.subItems
+                      ? item.subItems.map((sub, index) => (
+                          <Link
+                            key={index}
+                            href={sub.href}
+                            className={`block px-6 py-3 text-sm transition-colors border-b 
+                            ${
+                              isActive(sub.href)
+                                ? "bg-white text-green-600 font-bold"
+                                : "hover:bg-white hover:text-green-600"
+                            }`}
+                          >
+                            {sub.name}
+                          </Link>
+                        ))
+                      : item.subChild ??
+                        ServiceList.map((sub, index) => (
+                          <Link
+                            key={index}
+                            href={`/service/${sub.slug}`}
+                            className={`block px-6 py-3 text-sm transition-colors border-b 
+                            ${
+                              isActive(sub.slug)
+                                ? "bg-white text-green-600 font-bold"
+                                : "hover:bg-white hover:text-green-600"
+                            }`}
+                          >
+                            {sub.name}
+                          </Link>
+                        ))}
+                    {/* {ServiceList.map((sub, index) => (
                       <Link
                         key={index}
-                        href={sub.href}
+                        href={sub.cta_url}
                         className={`block px-6 py-3 text-sm transition-colors border-b 
                           ${
-                            isActive(sub.href)
+                            isActive(sub.cta_url)
                               ? "bg-white text-green-600 font-bold"
                               : "hover:bg-white hover:text-green-600"
                           }`}
                       >
                         {sub.name}
                       </Link>
-                    ))}
+                    ))} */}
                   </div>
                 )}
               </div>
@@ -149,13 +195,13 @@ const Navbar = () => {
               </button>
               {item.subItems && openMenu === item.name && (
                 <div className="bg-white border mt-1 rounded">
-                  {item.subItems.map((sub) => (
+                  {ServiceList.map((sub) => (
                     <Link
                       key={sub.name}
-                      href={sub.href}
+                      href={sub.cta_url}
                       className={`block px-4 py-2 text-sm transition 
                       ${
-                        isActive(sub.href)
+                        isActive(sub.cta_url)
                           ? "bg-green-100 text-green-700 font-semibold"
                           : "text-black hover:bg-gray-100"
                       }`}

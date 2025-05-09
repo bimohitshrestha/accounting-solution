@@ -6,6 +6,7 @@ import KeepingUp from "./homesection/KeepingUp";
 import WhyChooseUs from "./homesection/WhyChooseUs";
 import Trust from "./homesection/Trust";
 import LetsTalk from "./homesection/LetsTalk";
+import Map from "./homesection/Map";
 
 export default function Home() {
   return (
@@ -17,7 +18,6 @@ export default function Home() {
       <KeepingUp />
       <WhyChooseUs />
       <Trust />
-      <LetsTalk />
     </div>
   );
 }

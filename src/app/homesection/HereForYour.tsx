@@ -3,10 +3,10 @@ import ParagraphHeader from "@/component/header/ParagraphHeader";
 
 const HereForYou = () => {
   return (
-    <div className="  max-w-lvw mx-auto border-t-2 border-black mb-6">
+    <div className="  max-w-lvw mx-auto border-t-2 border-black ">
       <main className="container mx-auto px-4 py-8">
         <ParagraphHeader
-          title="We Are Here For Your"
+          title="We Are Here For You"
           description="  We offer Accounting, Taxation And Bookkeeping Services for our
             clients in Melbourne's Outer Eastern Suburbs. With a wealth of
             experience, and depth of knowledge, across a wide range of sectors,

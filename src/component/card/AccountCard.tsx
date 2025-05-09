@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import {
@@ -10,6 +11,7 @@ import {
 } from "react-icons/bi";
 import { BsDatabase } from "react-icons/bs";
 import { FiFileText } from "react-icons/fi";
+import { useAppSelector } from "@/hooks/useAppSelector";
 
 const services = [
   {
@@ -79,21 +81,22 @@ const services = [
 ];
 
 const AccountCard = () => {
+  const { ServiceList } = useAppSelector((state) => state.service);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      {services.map((service, index) => (
-        <Link href={service.href} key={index}>
+      {ServiceList.map((service, index) => (
+        <Link href={`/service/${service.slug}`} key={index}>
           <div
             key={index}
             className="border border-gray-200 p-6 rounded-lg flex flex-col items-center text-center "
           >
             <div className="mb-4  text-blue-600 hover:text-black">
-              {service.icon}
+              {service.cta_url}
             </div>
             <h3 className="text-lg font-normal text-blue-600 hover:text-black mb-3">
               {service.title}
             </h3>
-            <p className="text-gray-600 text-[10px]">{service.description}</p>
+            <p className="text-gray-600 text-[10px]">{service.name}</p>
           </div>
         </Link>
       ))}

@@ -1,13 +1,13 @@
-import LinkButton from "@/component/common/button/LinkButton";
-import InputField from "@/component/field/InputField";
-import FormInput from "@/component/form/FormInput";
-import ParagraphHeader from "@/component/header/ParagraphHeader";
-import Link from "next/link";
 import React from "react";
-import { BiCalendar, BiLocationPlus, BiPhone } from "react-icons/bi";
-import { BsInstagram, BsYoutube } from "react-icons/bs";
+
+import FormInput from "@/component/form/FormInput";
+import LinkButton from "@/component/common/button/LinkButton";
+import ParagraphHeader from "@/component/header/ParagraphHeader";
 import { FaFacebook, FaLinkedin, FaPhone } from "react-icons/fa";
-import { MdEmail, MdOutlinePhoneInTalk } from "react-icons/md";
+import { BiLocationPlus } from "react-icons/bi";
+import { MdEmail } from "react-icons/md";
+import { BsInstagram, BsYoutube } from "react-icons/bs";
+import ContactDetails from "@/component/details/ContactDetails";
 
 const socialLinks = [
   {
@@ -63,53 +63,14 @@ const social = [
     label: "YouTube",
   },
 ];
-const LetsTalk = () => {
+
+const LetsTalk: React.FC = () => {
   return (
     <div className="max-w-lvw mx-auto border-t-2 border-black mb-6">
       <main className="container mx-auto px-4 py-8">
         <ParagraphHeader title={`Let's Talk Business`} />
         <div className="w-full flex flex-col md:flex-row items-start justify-center gap-5">
-          <div className="w-full md:w-1/2 flex flex-col items-start justify-start m-2 md:mx-10">
-            <h5 className="text-primary capitalize text-2xl font-semibold mb-6">
-              Chartered
-            </h5>
-            {socialLinks.map((data, index) => (
-              <div
-                className="flex items-start gap-4 text-lg justify-center mb-2"
-                key={index}
-              >
-                {data.icon}
-                <span>{data.value}</span>
-              </div>
-            ))}
-            <div className="flex flex-wrap justify-center gap-3 mt-15">
-              {social.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={link.label}
-                >
-                  {link.icon}
-                </Link>
-              ))}
-            </div>
-
-            <div className="flex flex-col items-center justify-center gap-7 mt-8">
-              <LinkButton
-                title="Full Contact List"
-                link="https://www.facebook.com/"
-                icon={<MdOutlinePhoneInTalk size={24} />}
-              />
-
-              <LinkButton
-                link="#"
-                title="Make an Appointment"
-                icon={<BiCalendar size={24} />}
-              />
-            </div>
-          </div>
+          <ContactDetails socialLinks={socialLinks} social={social} />
 
           <div className="w-full md:w-1/2">
             <FormInput />

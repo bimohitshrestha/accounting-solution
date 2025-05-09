@@ -1,24 +1,15 @@
+
 export const navItems = [
     {
       name: "Home",
-      href: "",
+      href: "/",
+      subChild:false,
     },
    
     {
       name: "Services",
       href: "/services",
-      subItems: [
-        { name: "Accounting Services", href: "/service/accounting-services" },
-        { name: "Bookkeeping", href: "/service/bookkeeping" },
-        { name: "Business Coaching Service", href: "/service/business-coaching" },
-        { name: "Business Structures", href: "/service/business-structure" },
-        { name: "Capital Gains", href: "/service/capital-gain" },
-        { name: "Corporate Consulting", href: "/service/corporate-consulting" },
-        { name: "Cryptocurrency", href: "/service/crypto-currency" },
-        { name: "Taxation services", href: "/service/taxation-services" },
-
-
-      ],
+      subItems:null,
     },
     {
       name:"About Us",
@@ -66,17 +57,24 @@ export const navItems = [
     
     {
       name: "Newsletter",
-      href: "/news-letter",
+      href: "/newsletter",
+      subChild:false,
+
+      
      
     },
     {
       name: "Blog",
       href: "/blog",
+      subChild:false,
+
      
     },
     {
       name: "Contact Us",
       href: "/contact",
+      subChild:false,
+
     },
   ];
 

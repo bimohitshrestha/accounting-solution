@@ -2,6 +2,9 @@ import Navbar from "@/component/navbar/Navbar";
 import "./globals.css";
 import { Inter, Playfair_Display } from "next/font/google";
 import Footer from "@/component/footer/Footer";
+import LetsTalk from "./homesection/LetsTalk";
+import Map from "./homesection/Map";
+import ProviderWrapper from "./ProviderWrapper";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -53,9 +56,13 @@ export default function RootLayout({
         className={`${inter.className}`}
         style={{ background: "#fff", height: "100%" }}
       >
-        <Navbar />
-        {children}
-        <Footer />
+        <ProviderWrapper>
+          <Navbar />
+          {children}
+          <LetsTalk />
+          <Map />
+          <Footer />
+        </ProviderWrapper>
       </body>
     </html>
   );
