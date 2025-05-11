@@ -15,21 +15,28 @@ const socialLinks = [
     icon: (
       <FaPhone className="text-green-600 w-8 h-8 hover:scale-110 transition-transform" />
     ),
-    value: "98989898",
+    value: "9849909999",
+  },
+  {
+    href: "https://www.whatsapp.com/",
+    icon: (
+      <FaPhone className="text-green-600 w-8 h-8 hover:scale-110 transition-transform" />
+    ),
+    value: "9851012852",
   },
   {
     href: "https://www.whatsapp.com/",
     icon: (
       <BiLocationPlus className="text-blue-600 w-8 h-8 hover:scale-110 transition-transform" />
     ),
-    value: "Kathmandu, Nepal",
+    value: "5th floor infront of Silver City Appartment,Dillibazar",
   },
   {
     href: "https://www.whatsapp.com/",
     icon: (
       <MdEmail className="text-rose-500 w-8 h-8 hover:scale-110 transition-transform" />
     ),
-    value: "chartered2078@gmail.com",
+    value: "bidhur9999@gmail.com",
   },
 ];
 
@@ -86,8 +93,8 @@ const Page = () => {
             of accounting.
           </p>
         </div>
-        <div className="w-full flex items-start justify-center text-yellow-400">
-          <ContactDetails socialLinks={socialLinks} social={social} />
+        <div className="w-full flex items-start justify-center ">
+          <ContactDetails />
 
           <FormInput />
         </div>

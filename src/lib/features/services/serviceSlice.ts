@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getServiceList } from "./serviceAction";
-import { ServiceItem } from "./serviceInterface";
+import { getOrganizationInfo, getServiceList, getTestimonialList, submitQuery } from "./serviceAction";
+import { ClientData, Company, ServiceItem } from "./serviceInterface";
 
 
 interface ErrorPayload {
@@ -34,6 +34,8 @@ interface ServiceListState {
   isSuccess: boolean;
   message:string;
   ServiceList:ServiceItem[],
+  TestimonialList:ClientData[],
+  OrganizationList:Company[],
 
 }
 
@@ -44,7 +46,9 @@ const initialState: ServiceListState = {
   isError: false,
   isSuccess:false,
   message:"",
-  ServiceList:[]
+  ServiceList:[],
+  TestimonialList:[],
+  OrganizationList:[]
   
  
   
@@ -59,7 +63,7 @@ const serviceListSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // getColumnList action
+     
       .addCase(getServiceList.pending, (state) => {
         state.isloadingServiceList = true;
         state.isError = false;
@@ -79,6 +83,60 @@ const serviceListSlice = createSlice({
         // const temp: any = action.payload ?? connectionErr;
         // state.errorData = temp.data.message;
       })
+
+        .addCase(getTestimonialList.pending, (state) => {
+        state.isloadingServiceList = true;
+        state.isError = false;
+        state.isSuccess = false;
+        state.message = "";
+      })
+      .addCase(getTestimonialList.fulfilled, (state, action) => {
+        state.isloadingServiceList = false;
+        state.isSuccess = true;
+        state.TestimonialList = action.payload ?? [];
+        state.message = "Column list fetched successfully";
+      })
+      .addCase(getTestimonialList.rejected, (state, action) => {
+        state.isloadingServiceList = false;
+        state.isSuccess = false;
+        state.isError = true;
+        // const temp: any = action.payload ?? connectionErr;
+        // state.errorData = temp.data.message;
+      })
+
+      .addCase(getOrganizationInfo.pending, (state) => {
+        state.isloadingServiceList = true;
+        state.isError = false;
+        state.isSuccess = false;
+        state.message = "";
+      })
+      .addCase(getOrganizationInfo.fulfilled, (state, action) => {
+        state.isloadingServiceList = false;
+        state.isSuccess = true;
+        state.OrganizationList = action.payload ?? [];
+        state.message = "Column list fetched successfully";
+      })
+      .addCase(getOrganizationInfo.rejected, (state, action) => {
+        state.isloadingServiceList = false;
+        state.isSuccess = false;
+        state.isError = true;
+        // const temp: any = action.payload ?? connectionErr;
+        // state.errorData = temp.data.message;
+      })
+
+       .addCase(submitQuery.pending, (state) => {
+        state.loading = true;
+        state.isError = false;
+        state.isSuccess = false;
+      })
+      .addCase(submitQuery.fulfilled, (state) => {
+        state.loading = false;
+        state.isSuccess = true;
+      })
+      .addCase(submitQuery.rejected, (state, action) => {
+        state.loading = false;
+        state.isError = true;
+      });
      
   },
 });

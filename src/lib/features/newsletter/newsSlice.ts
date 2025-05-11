@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { NewsItem } from "./newsInterface";
-import { getNewsList } from "./newsAction";
+import { getNewsList, postSubscriber } from "./newsAction";
 import { getServiceList } from "../services/serviceAction";
 
 
@@ -82,6 +82,19 @@ const newsListSlice = createSlice({
         // state.errorData = temp.data.message;
       })
      
+        .addCase(postSubscriber.pending, (state) => {
+              state.loading = true;
+              state.isError = false;
+              state.isSuccess = false;
+            })
+            .addCase(postSubscriber.fulfilled, (state) => {
+              state.loading = false;
+              state.isSuccess = true;
+            })
+            .addCase(postSubscriber.rejected, (state, action) => {
+              state.loading = false;
+              state.isError = true;
+            });
   },
 });
 export const {

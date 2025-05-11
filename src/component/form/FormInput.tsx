@@ -1,9 +1,18 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputField from "../field/InputField";
 import ButtonText from "../common/button/ButtonText";
+import { useAppDispatch } from "@/hooks/useAppDispatch";
+import { useAppSelector } from "@/hooks/useAppSelector";
+import { submitQuery } from "@/lib/features/services/serviceAction";
+import ToastMessage from "../toast/ToastMessage";
 
 const FormInput = () => {
+  const dispatch = useAppDispatch();
+  const { loading, isSuccess, isError } = useAppSelector(
+    (state) => state.service
+  );
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -15,7 +24,14 @@ const FormInput = () => {
     email: "",
   });
 
-  const handleChange = (e: any) => {
+  const [toast, setToast] = useState<{
+    message: string;
+    type: "success" | "error";
+  } | null>(null);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -23,24 +39,47 @@ const FormInput = () => {
     }));
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    console.log("Form submitted:", formData);
+    const payload = {
+      name: `${formData.firstName} ${formData.lastName}`,
+      business_name: formData.business,
+      phone: formData.phone,
+      email: formData.email,
+      message: formData.message,
+    };
 
-    setFormData({
-      firstName: "",
-      lastName: "",
-      business: "",
-      phone: "",
-      location: "",
-      postcode: "",
-      message: "",
-      email: "",
-    });
+    try {
+      await dispatch(submitQuery(payload)).unwrap();
+      setToast({ message: "Message sent successfully!", type: "success" });
+
+      setFormData({
+        firstName: "",
+        lastName: "",
+        business: "",
+        phone: "",
+        location: "",
+        postcode: "",
+        message: "",
+        email: "",
+      });
+    } catch (error) {
+      setToast({ message: "Failed to send message.", type: "error" });
+    }
   };
+
+  useEffect(() => {
+    if (toast) {
+      const timer = setTimeout(() => setToast(null), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [toast]);
+
   return (
     <div>
+      {toast && <ToastMessage message={toast.message} type={toast.type} />}
+
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <div className="flex flex-col md:flex-row gap-4">
           <InputField
@@ -58,10 +97,10 @@ const FormInput = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="flex flex-col  md:flex-row gap-4">
+        <div className="flex flex-col md:flex-row gap-4">
           <InputField
             type="text"
-            placeholder="Your Business Name(if applicable)"
+            placeholder="Your Business Name (if applicable)"
             name="business"
             value={formData.business}
             onChange={handleChange}
@@ -74,7 +113,7 @@ const FormInput = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="flex flex-col  md:flex-row gap-4">
+        <div className="flex flex-col md:flex-row gap-4">
           <InputField
             type="text"
             placeholder="Your Location"
@@ -97,7 +136,6 @@ const FormInput = () => {
           value={formData.email}
           onChange={handleChange}
         />
-
         <InputField
           type="textarea"
           rows={8}
@@ -106,14 +144,12 @@ const FormInput = () => {
           onChange={handleChange}
           placeholder="Your Message"
         />
-        {/* <button
-          type="submit"
-          className="bg-primary text-white px-4 py-2 rounded hover:bg-opacity-80 transition"
-        >
-          Send Message
-        </button> */}
+
         <div className="flex items-start">
-          <ButtonText title="Send Message" requiredIcon={false} />
+          <ButtonText
+            title={loading ? "Sending..." : "Send Message"}
+            requiredIcon={false}
+          />
         </div>
       </form>
     </div>

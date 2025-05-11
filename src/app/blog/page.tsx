@@ -6,6 +6,7 @@ import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { getBlogList } from "@/lib/features/blog/blogAction";
 import BlogCard from "@/component/card/BlogCard";
+import PreLoader from "@/component/loading/PreLoader";
 
 const Page = () => {
   const dispatch = useAppDispatch();
@@ -15,16 +16,20 @@ const Page = () => {
 
   useEffect(() => {
     dispatch(getBlogList());
-  }, [dispatch]);
+  }, []);
 
-  {
-    isLoadingBlogList && (
-      <div className="p-8 text-center text-gray-500">Loading Blog List...</div>
-    );
+  // if (isLoadingBlogList) {
+  //   return (
+  //     <div className="p-8 text-center text-gray-500">Loading Blog List...</div>
+  //   );
+  // }
+
+  if (isLoadingBlogList) {
+    return <PreLoader name="Loading blog list...." />;
   }
 
-  {
-    isError && (
+  if (isError) {
+    return (
       <div className="p-8 text-center text-red-600">
         <span className="text-xl font-semibold">
           Failed to load blog posts. Please try again later.

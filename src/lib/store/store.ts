@@ -4,6 +4,7 @@ import serviceSlice from "../features/services/serviceSlice";
 import teamSlice from "../features/team/teamSlice";
 import newsSlice from "../features/newsletter/newsSlice";
 import blogSlice from "../features/blog/blogSlice";
+import faqSlice from "../features/faqs/faqSlice"
 
 
 
@@ -17,7 +18,9 @@ const store = configureStore({
     service: serviceSlice,
     team:teamSlice,
     news:newsSlice,
-    blog:blogSlice
+    blog:blogSlice,
+    faqs:faqSlice,
+
   
   },
 //   middleware: (getDefaultMiddleware) =>

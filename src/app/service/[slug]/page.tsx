@@ -6,7 +6,7 @@ import { ServiceItem } from "@/lib/features/services/serviceInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import demoImage from "../../../../public/accountant.jpg";
 import Image from "next/image";
-import { features } from "process";
+
 type tParams = Promise<{ slug: string }>;
 
 export async function generateMetadata(
@@ -21,14 +21,14 @@ export async function generateMetadata(
 
   if (!response) {
     return {
-      title: "Opps Not found",
+      title: "Oops, Not found",
       description:
-        "You requested early or am I lazy to build this page. sorry!!.",
+        "You requested early or am I lazy to build this page. Sorry!!",
     };
   }
 
   return {
-    title: post?.title ?? "home page",
+    title: post?.title ?? "Home Page",
     description: post?.meta_description,
     openGraph: {
       title: post?.meta_title,
@@ -58,17 +58,19 @@ export default async function Page({
   console.log("post>>>>>>", post);
 
   return (
-    <div className="w-full ">
+    <div className="w-full">
       <ImageHeader
-        title={post?.name ?? "unable to load title"}
+        title={post?.name ?? "Unable to load title"}
         image={post?.hero_image ?? "unable to load image"}
       />
+
       <div className="mt-4">
         <NavbarMenuHeader
-          title={post?.title ?? "unable to load title"}
+          title={post?.title ?? "Unable to load title"}
           description={post?.content}
         />
       </div>
+
       <div className="mx-10">
         <Image
           src={post?.content_image ?? demoImage}
@@ -77,10 +79,18 @@ export default async function Page({
           height={800}
         />
       </div>
+
+      <div className="mx-10 mt-5 ">
+        <p className="text-xl font-medium leading-relaxed text-gray-600">
+          {post?.description ?? "Description not available."}
+        </p>
+      </div>
+
       <div
-        className="text-xl  mx-10  custom-section-container"
+        className="text-xl mx-10 mt-6 custom-section-container"
         dangerouslySetInnerHTML={{ __html: post?.features ?? "" }}
       ></div>
+
       <HereForYou />
     </div>
   );

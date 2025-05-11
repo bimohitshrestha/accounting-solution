@@ -19,4 +19,9 @@ interface Subscriber {
     created_at: string;
     updated_at: string;
   }
-  
+  export interface subscriber {
+  name: string;
+
+  email: string;
+ isSubscriber:boolean;
+}

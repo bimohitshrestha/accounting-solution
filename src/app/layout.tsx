@@ -52,6 +52,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        {/* <script
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback"
+          defer
+        ></script> */}
+      </head>
       <body
         className={`${inter.className}`}
         style={{ background: "#fff", height: "100%" }}

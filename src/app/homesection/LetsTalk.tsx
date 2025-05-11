@@ -15,21 +15,28 @@ const socialLinks = [
     icon: (
       <FaPhone className="text-green-600 w-8 h-8 hover:scale-110 transition-transform" />
     ),
-    value: "98989898",
+    value: "9849909999",
+  },
+  {
+    href: "https://www.whatsapp.com/",
+    icon: (
+      <FaPhone className="text-green-600 w-8 h-8 hover:scale-110 transition-transform" />
+    ),
+    value: "9851012852",
   },
   {
     href: "https://www.whatsapp.com/",
     icon: (
       <BiLocationPlus className="text-blue-600 w-8 h-8 hover:scale-110 transition-transform" />
     ),
-    value: "Kathmandu, Nepal",
+    value: "5th floor infront of Silver City Appartment,Dillibazar",
   },
   {
     href: "https://www.whatsapp.com/",
     icon: (
       <MdEmail className="text-rose-500 w-8 h-8 hover:scale-110 transition-transform" />
     ),
-    value: "chartered2078@gmail.com",
+    value: "bidhur9999@gmail.com",
   },
 ];
 
@@ -70,7 +77,7 @@ const LetsTalk: React.FC = () => {
       <main className="container mx-auto px-4 py-8">
         <ParagraphHeader title={`Let's Talk Business`} />
         <div className="w-full flex flex-col md:flex-row items-start justify-center gap-5">
-          <ContactDetails socialLinks={socialLinks} social={social} />
+          <ContactDetails />
 
           <div className="w-full md:w-1/2">
             <FormInput />

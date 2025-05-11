@@ -94,9 +94,10 @@ const AccountCard = () => {
               {service.cta_url}
             </div>
             <h3 className="text-lg font-normal text-blue-600 hover:text-black mb-3">
-              {service.title}
+              {service.name}
             </h3>
-            <p className="text-gray-600 text-[10px]">{service.name}</p>
+            <p className="text-gray-600 text-sm mb-3">{service.title}</p>
+            <p className="text-gray-600 text-sm">{service.description}</p>
           </div>
         </Link>
       ))}

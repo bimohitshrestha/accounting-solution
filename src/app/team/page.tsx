@@ -13,9 +13,18 @@ import {
 } from "react-icons/md";
 import { GiFarmTractor } from "react-icons/gi";
 import { RiMailLine } from "react-icons/ri";
-import { FaGraduationCap, FaPhoneAlt, FaUserTie } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaGraduationCap,
+  FaInstagram,
+  FaLinkedin,
+  FaPhoneAlt,
+  FaTwitter,
+  FaUserTie,
+} from "react-icons/fa";
 import { GoPlus } from "react-icons/go";
 import { LiaLinkedin } from "react-icons/lia";
+import PreLoader from "@/component/loading/PreLoader";
 
 const industryIcons = {
   Hospitality: <ImSpoonKnife className="w-6 h-6" />,
@@ -32,24 +41,35 @@ const Page = () => {
   );
   console.log("team list>>>>>>>>", TeamList);
 
+  const getSocialIcon = (platform: string) => {
+    switch (platform.toLowerCase()) {
+      case "twitter":
+        return <FaTwitter className="w-5 h-5 text-black" />;
+      case "facebook":
+        return <FaFacebook className="w-5 h-5 text-blue-500" />;
+      case "linkedin":
+        return <FaLinkedin className="w-5 h-5 text-blue-700" />;
+      case "instagram":
+        return <FaInstagram className="w-5 h-5 text-rose-600" />;
+      default:
+        return null;
+    }
+  };
+
   useEffect(() => {
     dispatch(getTeamList());
   }, []);
 
-  // if (isloadingServiceList) {
-  //   return (
+  if (isloadingServiceList) {
+    return <PreLoader name="Loading team members...." />;
+  }
+  // {
+  //   isloadingServiceList && (
   //     <div className="p-8 text-center text-gray-500">
   //       Loading team members...
   //     </div>
   //   );
   // }
-  {
-    isloadingServiceList && (
-      <div className="p-8 text-center text-gray-500">
-        Loading team members...
-      </div>
-    );
-  }
 
   return (
     <div className="bg-gray-50 min-h-screen pb-12">
@@ -124,12 +144,13 @@ const Page = () => {
                       href={media.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="font-medium text-blue-600 hover:text-blue-800 transition-colors"
+                      className=" flex items-center gap-3 space-x-3 font-medium text-blue-600 hover:text-blue-800 transition-colors"
                     >
+                      {getSocialIcon(media.platform)}
                       {media.display_name}{" "}
-                      <span className="text-2xl font-bold">
-                        ({media.platform})
-                      </span>
+                      {/* <span className="text-2xl font-bold">
+                        ({media.display_name})
+                      </span> */}
                     </a>
                   </div>
                 ))}
