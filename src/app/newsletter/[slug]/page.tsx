@@ -54,7 +54,7 @@ export default async function Page({
   const response = await fetch("http://192.168.100.66:8080/api/newsletters/");
   const news: NewsItem[] = await response.json();
   const post = news.find((item) => item.slug === param.slug);
-  console.log("post>>>>>>", post);
+
   if (!post) {
     return "blog not found";
   }

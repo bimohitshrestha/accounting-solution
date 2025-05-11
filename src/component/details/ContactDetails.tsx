@@ -32,7 +32,6 @@ const ContactDetails: React.FC = () => {
   const { OrganizationList } = useAppSelector((state) => state.service);
   const dispatch = useAppDispatch();
   const organization = OrganizationList[0];
-  console.log("organization list>>>>>>>", organization);
 
   useEffect(() => {
     dispatch(getOrganizationInfo());

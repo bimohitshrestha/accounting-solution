@@ -53,10 +53,9 @@ export default async function Page({
 
   const data = await fetch("http://192.168.100.66:8080/api/blogs/");
   const posts: BlogItem[] = await data.json();
-  console.log("posts::", posts);
 
   const blog = posts.find((item) => item.slug === param.slug);
-  console.log("post>>>>>>", blog);
+
   if (!blog) {
     return "blog not found";
   }

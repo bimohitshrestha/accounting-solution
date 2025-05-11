@@ -39,7 +39,6 @@ const Page = () => {
   const { TeamList, isloadingServiceList } = useAppSelector(
     (state) => state.team
   );
-  console.log("team list>>>>>>>>", TeamList);
 
   const getSocialIcon = (platform: string) => {
     switch (platform.toLowerCase()) {

@@ -52,10 +52,8 @@ export default async function Page({
 
   const data = await fetch("http://192.168.100.66:8080/api/services/");
   const posts: ServiceItem[] = await data.json();
-  console.log("posts::", posts);
 
   const post = posts.find((item) => item.slug === param.slug);
-  console.log("post>>>>>>", post);
 
   return (
     <div className="w-full">
