@@ -6,7 +6,7 @@ interface LayoutProps {
 }
 
 export const metadata: Metadata = {
-  title: "FAQS | Chartered Management ",
+  title: "Contact | Chartered Management ",
 };
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {

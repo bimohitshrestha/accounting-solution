@@ -5,50 +5,49 @@ import React from "react";
 
 const Introduces = () => {
   const handleButtonClick = () => {
-    alert("you clicked learn more button");
+    alert("You clicked the 'Learn More' button");
   };
-  return (
-    <div className=" max-w-lvw mx-auto mb-6">
-      <main className="container mx-auto px-4 py-8">
-        <ParagraphHeader
-          title="Let Us Introduce ourselves"
-          description="Looking for top-notch support for your accounting, taxation, and bookkeeping needs? Look no further than Tailored Accounting Solutions! Based in Bayswater, nestled in Melbourne's Eastern suburbs, we proudly serve clients across the entire Melbourne area.
 
-"
-          className="text-lg  font-bold text-gray-700"
+  return (
+    <section className="w-full mb-12">
+      <div className="container mx-auto px-6 md:px-8">
+        <ParagraphHeader
+          title="Let Us Introduce Ourselves"
+          description="Looking for top-notch support for your accounting, taxation, and bookkeeping needs? Look no further than Tailored Accounting Solutions! Based in Bayswater, nestled in Melbourne's Eastern suburbs, we proudly serve clients across the entire Melbourne area."
+          className="text-2xl text-gray-800 font-bold max-w-lvw mx-auto text-center"
         />
 
-        <div className="flex flex-col max-w-max mx-auto items-start justify-center gap-10 text-gray-500 text-xl font-normal">
-          <p className="">
+        <div className="flex flex-col items-start justify-center gap-6 md:gap-8 text-[#444] font-[300px] text-lg leading-relaxed">
+          <p className="font-normal">
             {`
-            With over 25 years of experience in the accounting and bookkeeping
-            industry, our dedicated team offers professional expertise you can
-            trust. Whether you're a business owner seeking comprehensive
-            accounting services or an individual aiming for optimal results in
-            your tax return, we've got you covered. We prioritize your financial
-            success, providing strategic and practical advice to help you
-            minimise tax obligations and maximise profits. Rest assured; your
-            accounts are in safe hands with our reliable professionals.
-            
+              With over 25 years of experience in the accounting and bookkeeping
+              industry, our dedicated team offers professional expertise you can
+              trust. Whether you're a business owner seeking comprehensive
+              accounting services or an individual aiming for optimal results in
+              your tax return, we've got you covered. We prioritize your financial
+              success, providing strategic and practical advice to help you
+              minimize tax obligations and maximize profits. Rest assured, your
+              accounts are in safe hands with our reliable professionals.
             `}
           </p>
-          <p className="">
+          <p className="font-normal">
             {`
-            
-            No matter the nature of your business, choosing TAS means choosing
-            excellence in accounting support. Let us tailor our services to meet
-            your specific needs and exceed your expectations. Get in touch today
-            to experience the difference firsthand!
+              No matter the nature of your business, choosing TAS means choosing
+              excellence in accounting support. Let us tailor our services to meet
+              your specific needs and exceed your expectations. Get in touch today
+              to experience the difference firsthand!
             `}
           </p>
-          <ButtonText
-            title="Learn More"
-            onClick={handleButtonClick}
-            requiredIcon={false}
-          />
+          <div className="mt-6 text-center">
+            <ButtonText
+              title="Learn More"
+              onClick={handleButtonClick}
+              requiredIcon={true}
+            />
+          </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </section>
   );
 };
 

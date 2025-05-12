@@ -3,7 +3,7 @@ import ParagraphHeader from "@/component/header/ParagraphHeader";
 
 const HereForYou = () => {
   return (
-    <div className="  max-w-lvw mx-auto border-t-2 border-black ">
+    <div className="  max-w-lvw mx-auto border-t-2 border-black mb-12">
       <main className="container mx-auto px-4 py-8">
         <ParagraphHeader
           title="We Are Here For You"

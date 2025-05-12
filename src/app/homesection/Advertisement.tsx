@@ -12,7 +12,7 @@ const logos = [
 
 const Advertisement = () => {
   return (
-    <section className="w-full py-6 px-4 bg-slate-200 text-black mb-6">
+    <section className="w-full py-6 px-4 bg-slate-200 text-black mb-12">
       <div className="flex flex-wrap items-start justify-start gap-8">
         {logos.map((logo, index) => (
           <Image

@@ -143,7 +143,7 @@ const Page = () => {
                       href={media.url}
                       target="_blank"
                       rel="noreferrer"
-                      className=" flex items-center gap-3 space-x-3 font-medium text-blue-600 hover:text-blue-800 transition-colors"
+                      className=" flex items-center gap-3 space-x-3 font-medium text-level transition-colors"
                     >
                       {getSocialIcon(media.platform)}
                       {media.display_name}{" "}
@@ -156,15 +156,15 @@ const Page = () => {
               </div>
 
               <div
-                className="text-gray-800 text-base mt-2 leading-relaxed bg-gray-50 p-4 rounded-lg border-l-4 border-purple-500"
+                className="text-gray-800 text-base mt-2 leading-relaxed bg-gray-50 p-4 rounded-lg border-l-4 border-level"
                 dangerouslySetInnerHTML={{ __html: member?.bio }}
               />
 
               {member?.specialization?.length > 0 && (
                 <div className="mt-4 bg-gray-50 p-4 rounded-lg">
-                  <h3 className="font-semibold text-purple-800 text-lg mb-3 flex items-center">
+                  <h3 className="font-semibold text-level text-lg mb-3 flex items-center">
                     <span className="mr-2">Industry Specialisations</span>
-                    <div className="h-0.5 flex-grow bg-purple-200 rounded-full"></div>
+                    <div className="h-0.5 flex-grow bg-level rounded-full"></div>
                   </h3>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                     {member.specialization.map((spec) => (

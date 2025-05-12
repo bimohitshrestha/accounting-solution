@@ -40,7 +40,9 @@ const Navbar = () => {
     <div className="w-full bg-slate-100 border-b-2 border-black py-8">
       <div className="h-28 px-4 lg:px-16 flex items-center justify-between py-5">
         <div>
-          <Image src="/next.svg" alt="Logo" width={150} height={200} />
+          <Link href="/">
+            <Image src="/next.svg" alt="Logo" width={150} height={200} />
+          </Link>
         </div>
 
         <div>
@@ -51,21 +53,21 @@ const Navbar = () => {
                 target="_blank"
                 aria-label="Instagram"
               >
-                <BsInstagram className="text-rose-600 w-6 h-6 hover:scale-110 transition-transform" />
+                <BsInstagram className="text-level w-6 h-6 hover:scale-110 transition-transform" />
               </Link>
               <Link
                 href="https://www.facebook.com/"
                 target="_blank"
                 aria-label="Facebook"
               >
-                <FaFacebook className="text-blue-600 w-6 h-6 hover:scale-110 transition-transform" />
+                <FaFacebook className="text-level w-6 h-6 hover:scale-110 transition-transform" />
               </Link>
               <Link
                 href="https://www.linkedin.com/"
                 target="_blank"
                 aria-label="LinkedIn"
               >
-                <FaLinkedin className="text-blue-900 w-6 h-6 hover:scale-110 transition-transform" />
+                <FaLinkedin className="text-level w-6 h-6 hover:scale-110 transition-transform" />
               </Link>
             </div>
             <p className="flex items-center text-black text-lg gap-2">
@@ -84,11 +86,11 @@ const Navbar = () => {
               >
                 <button
                   onClick={() => toggleSubMenu(item.name)}
-                  className={`flex items-center px-4 py-2 border-2 border-slate-300 transition
+                  className={`flex items-center px-4 py-2 border-1 border-black transition
                   ${
                     isActive(item.href || "")
-                      ? "bg-green-600 text-white"
-                      : "bg-white hover:bg-green-400 hover:text-white text-black"
+                      ? "bg-level text-white"
+                      : "bg-white hover:bg-level hover:text-white text-black"
                   }`}
                 >
                   <Link
@@ -109,7 +111,7 @@ const Navbar = () => {
                 </button>
 
                 {openMenu === item.name && (
-                  <div className="absolute top-full left-0 bg-green-500 text-white shadow-lg w-44 z-50">
+                  <div className="absolute top-full left-0 bg-level text-white shadow-lg w-44 z-50">
                     {item.subItems
                       ? item.subItems.map((sub, index) => (
                           <Link
@@ -118,8 +120,8 @@ const Navbar = () => {
                             className={`block px-6 py-3 text-sm transition-colors border-b 
                             ${
                               isActive(sub.href)
-                                ? "bg-white text-green-600 font-bold"
-                                : "hover:bg-white hover:text-green-600"
+                                ? "bg-white text-black font-bold"
+                                : "hover:bg-white hover:text-black"
                             }`}
                           >
                             {sub.name}
@@ -133,27 +135,13 @@ const Navbar = () => {
                             className={`block px-6 py-3 text-sm transition-colors border-b 
                             ${
                               isActive(sub.slug)
-                                ? "bg-white text-green-600 font-bold"
-                                : "hover:bg-white hover:text-green-600"
+                                ? "bg-white text-black font-bold"
+                                : "hover:bg-white hover:text-black"
                             }`}
                           >
                             {sub.name}
                           </Link>
                         ))}
-                    {/* {ServiceList.map((sub, index) => (
-                      <Link
-                        key={index}
-                        href={sub.cta_url}
-                        className={`block px-6 py-3 text-sm transition-colors border-b 
-                          ${
-                            isActive(sub.cta_url)
-                              ? "bg-white text-green-600 font-bold"
-                              : "hover:bg-white hover:text-green-600"
-                          }`}
-                      >
-                        {sub.name}
-                      </Link>
-                    ))} */}
                   </div>
                 )}
               </div>
@@ -172,18 +160,24 @@ const Navbar = () => {
       {mobileMenuOpen && (
         <div className="md:hidden px-4 pb-4 space-y-4">
           {navItems.map((item) => (
-            <div key={item.name}>
+            <div key={item.name} className="mb-2">
               <button
                 onClick={() => toggleSubMenu(item.name)}
-                className={`w-full flex justify-between items-center px-4 py-2 rounded
+                className={`w-full flex justify-between items-center px-4 py-2 border-1
+                   border-black transition
                 ${
                   isActive(item.href || "")
-                    ? "bg-green-700 text-white"
-                    : "bg-green-500 text-white"
+                    ? "bg-white text-black"
+                    : "bg-level text-white hover:bg-white hover:text-black  "
                 }`}
               >
-                {item.name}
-                {item.subItems && (
+                <Link
+                  href={item.subChild === false ? item.href : ""}
+                  className="flex items-center"
+                >
+                  {item.name}
+                </Link>
+                {item.subChild !== false && (
                   <span className="ml-2">
                     {openMenu === item.name ? (
                       <IoIosArrowUp />
@@ -193,22 +187,39 @@ const Navbar = () => {
                   </span>
                 )}
               </button>
-              {item.subItems && openMenu === item.name && (
-                <div className="bg-white border mt-1 rounded">
-                  {ServiceList.map((sub) => (
-                    <Link
-                      key={sub.name}
-                      href={sub.cta_url}
-                      className={`block px-4 py-2 text-sm transition 
-                      ${
-                        isActive(sub.cta_url)
-                          ? "bg-green-100 text-green-700 font-semibold"
-                          : "text-black hover:bg-gray-100"
-                      }`}
-                    >
-                      {sub.name}
-                    </Link>
-                  ))}
+
+              {openMenu === item.name && (
+                <div className="bg-white text-black shadow-lg mt-1 w-full">
+                  {item.subItems
+                    ? item.subItems.map((sub, index) => (
+                        <Link
+                          key={index}
+                          href={sub.href}
+                          className={`block px-6 py-3 text-sm transition-colors border-b 
+                          ${
+                            isActive(sub.href)
+                              ? "bg-white text-black font-bold"
+                              : "hover:bg-white hover:text-black"
+                          }`}
+                        >
+                          {sub.name}
+                        </Link>
+                      ))
+                    : item.subChild ??
+                      ServiceList.map((sub, index) => (
+                        <Link
+                          key={index}
+                          href={`/service/${sub.slug}`}
+                          className={`block px-6 py-3 text-sm transition-colors border-b 
+                          ${
+                            isActive(sub.slug)
+                              ? "bg-white text-black font-bold"
+                              : "hover:bg-white hover:text-black"
+                          }`}
+                        >
+                          {sub.name}
+                        </Link>
+                      ))}
                 </div>
               )}
             </div>
@@ -220,21 +231,21 @@ const Navbar = () => {
               target="_blank"
               aria-label="Instagram"
             >
-              <BsInstagram className="text-rose-600 w-6 h-6" />
+              <BsInstagram className="text-level w-6 h-6 hover:scale-110 transition-transform" />
             </Link>
             <Link
               href="https://www.facebook.com/"
               target="_blank"
               aria-label="Facebook"
             >
-              <FaFacebook className="text-blue-600 w-6 h-6" />
+              <FaFacebook className="text-level w-6 h-6 hover:scale-110 transition-transform" />
             </Link>
             <Link
               href="https://www.linkedin.com/"
               target="_blank"
               aria-label="LinkedIn"
             >
-              <FaLinkedin className="text-blue-900 w-6 h-6" />
+              <FaLinkedin className="text-level w-6 h-6 hover:scale-110 transition-transform" />
             </Link>
           </div>
           <p className="flex items-center justify-center text-black text-lg gap-2">

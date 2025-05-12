@@ -15,10 +15,11 @@ const Page = () => {
   const { FaqList, isLoadingFaq } = useAppSelector((state) => state.faqs);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [expandAll, setExpandAll] = useState(false);
 
   useEffect(() => {
     dispatch(getFaqList());
-  }, [dispatch]);
+  }, []);
 
   const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -33,6 +34,13 @@ const Page = () => {
   const filteredFaqs = selectedCategory
     ? FaqList?.filter((faq: any) => faq.category?.name === selectedCategory)
     : FaqList;
+
+  const toggleExpandAll = () => {
+    setExpandAll(!expandAll);
+    if (!expandAll) {
+      setOpenIndex(null);
+    }
+  };
 
   if (isLoadingFaq) {
     return <PreLoader name="Loading Faqs...." />;
@@ -56,30 +64,50 @@ const Page = () => {
         {categories.length > 0 && (
           <div className="mb-10">
             <div className="flex flex-wrap justify-center gap-3">
-              <button
-                onClick={() => setSelectedCategory(null)}
-                className={`px-4 py-2 rounded-full transition-all ${
-                  selectedCategory === null
-                    ? "bg-blue-600 text-white shadow-md"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                }`}
-              >
-                All Categories
-              </button>
-              {categories.map((category: string) => (
+              <div className="flex gap-6 items-center justify-center">
                 <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
+                  onClick={() => setSelectedCategory(null)}
                   className={`px-4 py-2 rounded-full transition-all ${
-                    selectedCategory === category
-                      ? "bg-blue-600 text-white shadow-md"
+                    selectedCategory === null
+                      ? "bg-level text-white shadow-md"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
                 >
-                  {category}
+                  All Categories
                 </button>
-              ))}
+                {categories.map((category: string) => (
+                  <button
+                    key={category}
+                    onClick={() => setSelectedCategory(category)}
+                    className={`px-4 py-2 rounded-full transition-all ${
+                      selectedCategory === category
+                        ? "bg-level text-white shadow-md"
+                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    }`}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
             </div>
+
+            {filteredFaqs?.length > 0 && (
+              <div className="text-center mt-8">
+                <button
+                  onClick={toggleExpandAll}
+                  className="px-6 py-3 bg-level text-white rounded-md  transition-all flex items-center justify-center space-x-2"
+                >
+                  <span>{expandAll ? "Collapse All" : "Expand All"}</span>
+                  <div>
+                    {expandAll ? (
+                      <FiChevronUp size={18} />
+                    ) : (
+                      <FiChevronDown size={18} />
+                    )}
+                  </div>
+                </button>
+              </div>
+            )}
           </div>
         )}
 
@@ -98,7 +126,7 @@ const Page = () => {
         ) : (
           <div className="space-y-4">
             {filteredFaqs.map((faq: any, index: number) => {
-              const isOpen = openIndex === index;
+              const isOpen = expandAll || openIndex === index;
               return (
                 <div
                   key={faq.id}
@@ -132,7 +160,7 @@ const Page = () => {
                     </div>
                     <div
                       className={`text-blue-600 transition-transform duration-300 ${
-                        isOpen ? "rotate-180" : ""
+                        isOpen ? "rotate-360" : ""
                       }`}
                     >
                       {isOpen ? (
@@ -145,7 +173,7 @@ const Page = () => {
 
                   {isOpen && (
                     <div className="overflow-hidden">
-                      <div className="px-6 pb-6 pt-2 border-t border-gray-100">
+                      <div className="px-6 pb-6 pt-2 ">
                         <div
                           className="prose prose-blue max-w-none custom-section-container text-gray-700"
                           dangerouslySetInnerHTML={{ __html: faq.answer }}
@@ -159,6 +187,7 @@ const Page = () => {
           </div>
         )}
       </div>
+
       <HereForYou />
     </div>
   );

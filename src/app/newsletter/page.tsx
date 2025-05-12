@@ -26,7 +26,7 @@ const Page = () => {
 
       <Subscriber />
 
-      <div className="max-w-7xl mx-auto px-4 py-10">
+      <div className="max-w-7xl mx-auto  py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {NewsList.map((news) => (
             <div
@@ -49,9 +49,8 @@ const Page = () => {
                 />
               </div>
 
-              <div className="mt-6 flex items-center justify-end text-sm text-gray-600">
-                {/* <span>Subscribers: {news.subscriber_count}</span> */}
-                <div className="space-x-2">
+              <div className="mt-6 flex items-center justify-end gap-4 text-sm text-gray-600">
+                <div className="space-x-4">
                   <Link
                     href={`/newsletter/${news.slug}`}
                     className="text-blue-600 hover:underline"
@@ -59,7 +58,7 @@ const Page = () => {
                     View
                   </Link>
                   {!news.sent_at && (
-                    <button className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded">
+                    <button className="bg-level text-white px-4 py-2 rounded">
                       Send
                     </button>
                   )}

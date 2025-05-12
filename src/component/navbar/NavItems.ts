@@ -45,13 +45,13 @@ export const navItems = [
         {
           name: "FAQs",
           href: "/resources/faqs",
-          subItems: [
-            { name: "General Questions", href: "/resources/faqs/general" },
-            { name: "Technical Support", href: "/resources/faqs/tech-support" }
-          ]
+          // subItems: [
+          //   { name: "General Questions", href: "/resources/faqs/general" },
+          //   { name: "Technical Support", href: "/resources/faqs/tech-support" }
+          // ]
         },
-        { name: "Business Links", href: "/resources/business-links" },
-        { name: "Tax Checklist", href: "/services/tax-checklist" },
+        // { name: "Business Links", href: "/resources/business-links" },
+        // { name: "Tax Checklist", href: "/services/tax-checklist" },
       ],
     },
     

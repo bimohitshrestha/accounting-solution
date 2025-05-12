@@ -82,7 +82,7 @@ export default async function Page({
       <div className="max-w-7xl mx-auto px-4 mt-12">
         <div className="bg-white p-8 rounded-lg shadow-xl">
           {blog?.hero_image && (
-            <div className="relative w-full h-96 mb-6">
+            <div className="relative w-full h-[600px] mb-6">
               <Image
                 src={blog.hero_image}
                 alt={blog.hero_image_alt_text || "Blog Hero Image"}

@@ -11,7 +11,7 @@ const LinkButton = ({ link, title, icon }: LinkButtonProps) => {
   return (
     <a
       href={link}
-      target="_blank"
+      // target="_blank"
       className="bg-level w-full  text-white py-3 px-6 rounded flex items-center justify-center space-x-3 transition-colors duration-200 "
     >
       {icon}

@@ -15,12 +15,20 @@ const ParagraphHeader = ({
 }: ParagraphHeaderInterface) => {
   return (
     <div>
-      <div className={containerClassName}>
-        <h1 className="text-xl text-center md:text-3xl font-medium text-primary mb-6">
+      <div className={`${containerClassName}`}>
+        <h1 className="text-xl sm:text-2xl md:text-4xl text-center font-normal text-level mb-4 md:mb-8">
           {title}
         </h1>
 
-        <p className={`w-full ${className || ""}`}>{description}</p>
+        {description && (
+          <p
+            className={`text-sm sm:text-base md:text-lg text-center max-w-max mx-auto ${
+              className || ""
+            }`}
+          >
+            {description}
+          </p>
+        )}
       </div>
     </div>
   );

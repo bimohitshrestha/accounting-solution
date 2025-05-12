@@ -74,7 +74,6 @@ const Subscriber = () => {
     const script = document.createElement("script");
     script.src =
       "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
-    // <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>;
     script.async = true;
     script.defer = true;
     document.body.appendChild(script);
@@ -82,16 +81,16 @@ const Subscriber = () => {
 
   return (
     <>
-      <div className="w-full h-40 bg-slate-100 py-6">
-        <div className="mx-10">
-          <p className="text-blue-500 text-lg font-medium mt-2">
+      <div className="w-full bg-slate-100 py-6">
+        <div className="max-w-7xl mx-auto">
+          <p className="text-blue-500 text-lg font-medium mt-2 text-center sm:text-left">
             Subscribe to our Newsletter and Weekly Blog
           </p>
 
           {toast && <ToastMessage message={toast.message} type={toast.type} />}
 
           <form onSubmit={handleSubmit}>
-            <div className="flex gap-4 mt-4">
+            <div className="flex flex-col sm:flex-row gap-4 mt-4">
               <InputField
                 name="fullName"
                 value={formData.fullName}
@@ -107,18 +106,20 @@ const Subscriber = () => {
                 type="email"
                 required
               />
-
-              <div
-                className="cf-turnstile"
-                data-sitekey="0x4AAAAAABcjdtkq9V_MDWts"
-                data-theme="light"
-              ></div>
-
               <ButtonText
                 title={loading ? "Submitting..." : "Submit"}
                 requiredIcon={false}
               />
             </div>
+
+            {/* Turnstile widget
+            <div className="mt-4">
+              <div
+                className="cf-turnstile"
+                data-sitekey="0x4AAAAAABcjdtkq9V_MDWts"
+                data-theme="light"
+              ></div>
+            </div> */}
           </form>
         </div>
       </div>

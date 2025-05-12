@@ -28,7 +28,7 @@ export async function generateMetadata(
   }
 
   return {
-    title: post?.title ?? "Home Page",
+    title: post?.meta_title || "Service Page",
     description: post?.meta_description,
     openGraph: {
       title: post?.meta_title,
@@ -69,23 +69,24 @@ export default async function Page({
         />
       </div>
 
-      <div className="mx-10">
+      <div className="mx-4 sm:mx-8 md:mx-10">
         <Image
           src={post?.content_image ?? demoImage}
           alt={post?.content_image_alt_text ?? ""}
-          width={1500}
-          height={800}
+          width={1000}
+          height={400}
+          className="w-full h-[400px] sm:h-[500px] md:h-[600px] object-cover object-center"
         />
       </div>
 
-      <div className="mx-10 mt-5 ">
-        <p className="text-xl font-medium leading-relaxed text-gray-600">
+      <div className="mx-4 sm:mx-8 md:mx-10 mt-5">
+        <p className="text-lg sm:text-xl font-medium leading-relaxed text-gray-600">
           {post?.description ?? "Description not available."}
         </p>
       </div>
 
       <div
-        className="text-xl mx-10 mt-6 custom-section-container"
+        className="text-lg sm:text-xl mx-4 sm:mx-8 md:mx-10 mt-6 custom-section-container"
         dangerouslySetInnerHTML={{ __html: post?.features ?? "" }}
       ></div>
 

@@ -96,7 +96,7 @@ const ContactDetails: React.FC = () => {
 
   return (
     <div className="w-full md:w-1/2 flex flex-col items-start justify-start m-2 md:mx-10">
-      <h5 className="text-primary capitalize text-2xl font-semibold mb-6 underline">
+      <h5 className="text-level capitalize text-2xl font-semibold mb-6 underline">
         {organization?.name || "Organization Name"}
       </h5>
 
@@ -115,6 +115,7 @@ const ContactDetails: React.FC = () => {
           rel="noopener noreferrer"
           aria-label={data.value}
           className="flex items-start gap-4 text-lg justify-center mb-2"
+          // title={data.value}
         >
           {data.icon}
           <span>{data.value}</span>
@@ -129,6 +130,7 @@ const ContactDetails: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={link.label}
+            title={link.label}
           >
             {link.icon}
           </Link>

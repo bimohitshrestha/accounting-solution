@@ -53,7 +53,7 @@ const Trust = () => {
   };
 
   return (
-    <div className="w-full mx-auto bg-gray-100 relative">
+    <div className="w-full mx-auto bg-gray-100 relative mb-12">
       <main className="container mx-auto px-6 py-12">
         <ParagraphHeader
           title="A Trusted Partner For Businesses"
@@ -100,7 +100,7 @@ const Trust = () => {
               />
               <button
                 onClick={() => openModal(testimonial)}
-                className="text-blue-600 hover:text-blue-800 mt-4 font-medium text-sm hover:underline"
+                className="text-level mt-4 font-medium text-sm hover:underline"
               >
                 Read More
               </button>
