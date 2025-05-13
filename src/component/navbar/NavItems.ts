@@ -32,7 +32,7 @@ export const navItems = [
         { name: "Medical ", href: "/industry-specialisation/medical" },
         { name: "NDIS ", href: "/industry-specialisation/ndis" },
         { name: "Personal Trainers and Gyms ", href: "/industry-specialisation/personal-trainers" },
-        { name: "It Industry ", href: "/industry-specialisation/information-technology" },
+        
         { name: "Real Estate ", href: "/industry-specialisation/real-estate" },
         { name: "Tradies ", href: "/industry-specialisation/tradies" },
 

@@ -9,6 +9,7 @@ import { MdEmail } from "react-icons/md";
 import { BsInstagram, BsYoutube } from "react-icons/bs";
 import ContactDetails from "@/component/details/ContactDetails";
 
+// Contact info (phone, location, email)
 const socialLinks = [
   {
     href: "https://www.whatsapp.com/",
@@ -29,7 +30,7 @@ const socialLinks = [
     icon: (
       <BiLocationPlus className="text-blue-600 w-8 h-8 hover:scale-110 transition-transform" />
     ),
-    value: "5th floor infront of Silver City Appartment,Dillibazar",
+    value: "5th floor infront of Silver City Appartment, Dillibazar",
   },
   {
     href: "https://www.whatsapp.com/",
@@ -40,6 +41,7 @@ const socialLinks = [
   },
 ];
 
+// Social media links
 const social = [
   {
     href: "https://www.instagram.com/",
@@ -73,17 +75,15 @@ const social = [
 
 const LetsTalk: React.FC = () => {
   return (
-    <div className="max-w-lvw mx-auto border-t-2 border-black mb-12">
-      <main className="container mx-auto px-4 py-8">
-        <ParagraphHeader title={`Let's Talk Business`} />
-        <div className="w-full flex flex-col md:flex-row items-start justify-center gap-5">
-          <ContactDetails />
+    <div className="max-w-lvw mx-auto p-10 border-t-2 border-black mb-12">
+      <ParagraphHeader title={`Let's Talk Business`} />
+      <div className="w-full flex flex-col md:flex-row items-start justify-center gap-5 mt-8">
+        <ContactDetails />
 
-          <div className="w-full md:w-1/2">
-            <FormInput />
-          </div>
+        <div className="w-full md:w-1/2">
+          <FormInput />
         </div>
-      </main>
+      </div>
     </div>
   );
 };

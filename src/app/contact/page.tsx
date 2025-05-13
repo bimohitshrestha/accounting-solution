@@ -74,7 +74,7 @@ const social = [
 const Page = () => {
   return (
     <div className="bg-gray-100 min-h-screen pb-12 px-4 sm:px-6 lg:px-10">
-      <ImageHeader title="Contact Us" image="/contact.png" />
+      <ImageHeader title="Contact Us" image="/contact.png" alt="Contact Us" />
       <div className="w-full flex flex-col lg:flex-row gap-6 items-start mt-8">
         <div className="w-full lg:w-1/3 flex flex-col gap-6 text-gray-900 text-lg font-normal">
           <p>

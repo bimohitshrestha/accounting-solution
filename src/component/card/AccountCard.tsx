@@ -18,10 +18,10 @@ const AccountCard = () => {
             <div className="mb-4 text-blue-900 group-hover:text-blue-800 transition-colors">
               {service.cta_url}
             </div>
-            <h3 className="text-lg font-medium text-blue-900 group-hover:text-blue-800 transition-colors mb-3">
+            <h3 className="text-lg font-medium text-level group-hover:text-blue-800 transition-colors mb-3">
               {service.name}
             </h3>
-            <p className="text-gray-600 group-hover:text-gray-700 text-sm line-clamp-3 flex-grow transition-colors">
+            <p className="text-sm md:text-base text-gray-900 font-light line-clamp-3">
               {service.description}
             </p>
           </div>

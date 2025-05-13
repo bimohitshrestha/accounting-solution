@@ -44,7 +44,7 @@ const images = [
   "/accountant.jpg",
   "/accouting.jpg",
   "/accountant.jpg",
-  "/accouting.jpg",
+  "/contact.png",
   "/accountant.jpg",
   "/accouting.jpg",
 
@@ -117,7 +117,7 @@ const KeepingUp = () => {
         {startIndex > 0 && (
           <button
             onClick={handlePrev}
-            className="absolute left-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-70 text-white hover:bg-opacity-90 rounded-full shadow-md"
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-70 text-white hover:bg-opacity-90 rounded-full shadow-md cursor-pointer"
           >
             <GrFormPrevious className="w-6 h-6" />
           </button>
@@ -126,7 +126,7 @@ const KeepingUp = () => {
         {startIndex + IMAGES_PER_PAGE < images.length && (
           <button
             onClick={handleNext}
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-70 text-white hover:bg-opacity-90 rounded-full shadow-md"
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-70 text-white hover:bg-opacity-90 rounded-full shadow-md cursor-pointer"
           >
             <GrFormNext className="w-6 h-6" />
           </button>

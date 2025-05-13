@@ -150,11 +150,11 @@ body {
 }
 
 .custom-section-container p {
-  color: #444;
-  font-size: 1.25rem;
+  color: #101828;
+  font-size: 16px;
   font-weight: 300;
   margin: 1rem 0;
-  line-height: 1.8;
+  line-height: 1.5;
 }
 
 .custom-section-container img {
@@ -185,9 +185,9 @@ body {
 
 .custom-section-container ul li {
   margin-bottom: 1.2rem;
-  padding-left: 1.75rem;
+  padding-left: 20px; 
   position: relative;
-  font-size: 1.125rem;
+  font-size: 1rem;
   color: #263238;
   transition: color 0.3s ease;
 }
@@ -202,6 +202,7 @@ body {
   background-color: #5c6bc0;
   border-radius: 50%;
 }
+
 
 .custom-section-container ul li:hover {
   color: #1a237e;

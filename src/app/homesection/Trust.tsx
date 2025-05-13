@@ -23,7 +23,7 @@ const Trust = () => {
 
   useEffect(() => {
     dispatch(getTestimonialList());
-  }, []);
+  }, [dispatch]);
 
   const visibleTestimonials = useMemo(
     () => TestimonialList.slice(startIndex, startIndex + Testimonial_Per_Page),
@@ -53,22 +53,22 @@ const Trust = () => {
   };
 
   return (
-    <div className="w-full mx-auto bg-gray-100 relative mb-12">
-      <main className="container mx-auto px-6 py-12">
+    <div className="w-full mx-auto bg-gray-100 relative mb-6">
+      <main className="container mx-auto px-6 py-6">
         <ParagraphHeader
           title="A Trusted Partner For Businesses"
           description="What our customers say"
-          className="text-3xl text-gray-900 font-bold text-center mb-12"
+          className="text-3xl text-gray-900 font-bold text-center mb-8"
         />
 
-        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto mt-8">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  ">
           {visibleTestimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl p-6 shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out"
+              className="bg-white rounded-xl p-4 shadow-md transform hover:scale-105 transition-all duration-300 ease-in-out"
             >
-              <div className="flex items-center gap-5 mb-5">
-                <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-gray-200">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-gray-200">
                   <Image
                     src={testimonial.image || "/accountant.jpg"}
                     alt={`${testimonial.client_name}'s avatar`}
@@ -77,30 +77,30 @@ const Trust = () => {
                   />
                 </div>
                 <div>
-                  <h2 className="flex items-center gap-2 text-base font-semibold text-gray-800">
+                  <h2 className="flex items-center gap-1 text-sm font-semibold text-gray-800">
                     {testimonial.client_name}
                     <FaCheckCircle className="text-blue-600" />
                   </h2>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-xs text-gray-500">
                     {testimonial.company} •{" "}
                     {new Date(testimonial.created_at).toLocaleDateString()}
                   </p>
                 </div>
               </div>
-              <div className="flex items-center text-yellow-500 mb-4">
+              <div className="flex items-center text-yellow-500 mb-3 text-sm">
                 {[...Array(5)].map((_, i) => (
                   <FaStar key={i} />
                 ))}
               </div>
               <p
-                className="text-gray-700 text-base line-clamp-2"
+                className="text-gray-700 text-sm line-clamp-2"
                 dangerouslySetInnerHTML={{
                   __html: testimonial.content,
                 }}
               />
               <button
                 onClick={() => openModal(testimonial)}
-                className="text-level mt-4 font-medium text-sm hover:underline"
+                className="text-level mt-3 font-medium text-sm hover:underline"
               >
                 Read More
               </button>
@@ -110,26 +110,27 @@ const Trust = () => {
           {startIndex > 0 && (
             <button
               onClick={handlePrev}
-              className="absolute left-4 top-1/3 transform -translate-y-1/2 bg-white text-gray-800 hover:bg-gray-200 p-3 rounded-full shadow-md z-10"
+              className="absolute left-4 top-1/2 lg:top-72 transform -translate-y-1/2 bg-white text-gray-800 hover:bg-gray-200 p-2 rounded-full shadow-md z-10"
             >
-              <GrFormPrevious className="w-6 h-6" />
+              <GrFormPrevious className="w-5 h-5" />
             </button>
           )}
 
           {startIndex + Testimonial_Per_Page < TestimonialList.length && (
             <button
               onClick={handleNext}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white text-gray-800 hover:bg-gray-200 p-3 rounded-full shadow-md z-10"
+              className="absolute right-4 top-1/2 lg:top-72 transform -translate-y-1/2 bg-white text-gray-800 hover:bg-gray-200 p-2 rounded-full shadow-md z-10"
             >
-              <GrFormNext className="w-6 h-6" />
+              <GrFormNext className="w-5 h-5" />
             </button>
           )}
         </div>
 
-        <div className="flex justify-center mt-12">
+        <div className="flex justify-center mt-8">
           <ButtonText title="See More" icon={<BsGoogle />} requiredIcon />
         </div>
       </main>
+
       <TestimonialModal
         isOpen={isModalOpen}
         onClose={closeModal}

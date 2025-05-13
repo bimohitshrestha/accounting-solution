@@ -80,7 +80,7 @@ export default async function Page({
       </div>
 
       <div className="mx-4 sm:mx-8 md:mx-10 mt-5">
-        <p className="text-lg sm:text-xl font-medium leading-relaxed text-gray-600">
+        <p className="ext-sm md:text-base text-gray-900 font-light">
           {post?.description ?? "Description not available."}
         </p>
       </div>

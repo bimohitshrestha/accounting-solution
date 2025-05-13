@@ -95,19 +95,12 @@ const ContactDetails: React.FC = () => {
   });
 
   return (
-    <div className="w-full md:w-1/2 flex flex-col items-start justify-start m-2 md:mx-10">
+    <div className="w-full md:w-1/2 flex flex-col items-start justify-start ">
       <h5 className="text-level capitalize text-2xl font-semibold mb-6 underline">
         {organization?.name || "Organization Name"}
       </h5>
 
       {socialLinks?.map((data, index) => (
-        // <div
-        //   className="flex items-start gap-4 text-lg justify-center mb-2"
-        //   key={index}
-        // >
-        //   {data.icon}
-        //   <span>{data.value}</span>
-        // </div>
         <Link
           key={index}
           href={data.href}

@@ -24,9 +24,10 @@ const HeroSection = () => {
 
   return (
     <div className=" flex flex-col  mb-12">
-      <h1 className="text-4xl text-center text-level font-playfair py-4">
+      {/* <h1 className="text-4xl text-center text-level  py-4">
         Chartered Accounting Solutions
-      </h1>
+      </h1> */}
+      <ParagraphHeader title="Chartered Accounting Solutions" />
 
       <div className="relative w-full h-screen max-h-[500px] ">
         <div
