@@ -33,7 +33,7 @@ const Page: React.FC = () => {
       <div className="max-w-lvw mx-auto px-6 py-6">
         <DetailContent
           title="Accountants For Personal Trainers and Gyms"
-          subtitle="Personal Trainers (PT) and studio/gym owners can rely on TAS for tailored tax and business advice!"
+          subtitle="Personal Trainers (PT) and studio/gym owners can rely on CAS for chartered tax and business advice!"
           paragraphs={[
             "Gym owners must face unique challenges in meeting the physical demands of their jobs while operating and running their businesses. As well as working long hours and on weekends, they must handle many other responsibilities.",
             "Fitness & Personal Training is a specialized business. We help our clients in this industry minimize their worries about Bookkeeping, Taxation, and Compliance so they can concentrate on what they do best: running their business. Fitness professionals across Bayswater, Melbourne, and beyond have trusted us with their accounting needs, including gym owners, personal trainers, yoga instructors, and health coaches.",

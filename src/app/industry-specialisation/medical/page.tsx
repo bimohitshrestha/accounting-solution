@@ -43,7 +43,7 @@ const Page: React.FC = () => {
           bullets={bullets}
           paragraph={[
             "Count on us to solve your biggest accounting problems",
-            "Audits by the Australian Tax Office are often prompted by inadequate or ineffective documentation, unreliable financial planning, and unreliable reporting. If you don’t get these things right, you could end up paying more in penalties than you would have otherwise. Our medical accountants and bookkeepers at TAS Tailored Accounting Solutions ensure that all of these bases are covered, giving you a comprehensive team of accounting experts.",
+            "Audits by the Australian Tax Office are often prompted by inadequate or ineffective documentation, unreliable financial planning, and unreliable reporting. If you don’t get these things right, you could end up paying more in penalties than you would have otherwise. Our medical accountants and bookkeepers at CAS Chartered Accounting Solutions ensure that all of these bases are covered, giving you a comprehensive team of accounting experts.",
           ]}
         />
 

@@ -37,7 +37,7 @@ const Page: React.FC = () => {
             "Accountants who understand the auto trade can make all the difference between thriving and surviving. The TAS team provides mentoring services to motor mechanics, auto electricians, and smash repairers from start-ups to exits.",
             "Let us handle those parts of your business we know the most.",
             "Assisting auto electricians, smash repairers, and mechanics with their cash flow, invoices, payroll slips, and apprentice programs are what we do. We set up the proper tax structure and technology for your business, regardless of whether you're a sole proprietor, a partnership, a trust, or a corporation.",
-            "Our solutions are tailored to ensure that they work for both you and your business, recognizing that your business is unique and your requirements are too. We will assist you through all aspects of owning and operating a business, from conception to sale.",
+            "Our solutions are chartered to ensure that they work for both you and your business, recognizing that your business is unique and your requirements are too. We will assist you through all aspects of owning and operating a business, from conception to sale.",
           ]}
           // boldDescription={[]}
           imageSrc="/mechanic.jpg"

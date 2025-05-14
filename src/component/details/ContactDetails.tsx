@@ -49,7 +49,7 @@ const ContactDetails: React.FC = () => {
       value: organization?.email,
     },
     {
-      href: `https://wa.me/${organization?.whatsapp}`,
+      href: `https://web.whatsapp.com/send?phone=${organization?.phone_number1}`,
       icon: <BsWhatsapp className="w-6 h-6 text-green-600" />,
 
       value: organization?.whatsapp,

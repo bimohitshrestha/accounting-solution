@@ -9,7 +9,7 @@ const paragraphData = [
   {
     icon: VscWorkspaceTrusted,
     heading: "Trusted by Leading Brands",
-    text: "We provide top-tier solutions tailored to your business needs, combining innovation, experience, and industry insight. Our clients choose us for our reliability, transparency, and proven track record.",
+    text: "We provide top-tier solutions chartered to your business needs, combining innovation, experience, and industry insight. Our clients choose us for our reliability, transparency, and proven track record.",
   },
   {
     icon: FaHandshake,
@@ -19,7 +19,7 @@ const paragraphData = [
   {
     icon: FaRegLightbulb,
     heading: "Innovative Solutions",
-    text: "We harness cutting-edge technology to craft tailored solutions that drive business growth and efficiency.",
+    text: "We harness cutting-edge technology to craft chartered solutions that drive business growth and efficiency.",
   },
   {
     icon: FaUserFriends,

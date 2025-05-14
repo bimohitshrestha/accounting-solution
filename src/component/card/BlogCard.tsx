@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -21,11 +22,20 @@ const BlogCard: React.FC<BlogCardProps> = ({
   return (
     <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden group hover:shadow-2xl transition-shadow duration-300 ease-in-out">
       {image && (
-        <img
-          className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
-          src={image}
-          alt={title}
-        />
+        // <img
+        //   className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+        //   src={image}
+        //   alt={title}
+        // />
+        <div className="relative w-full h-48">
+          <Image
+            src={image}
+            alt={title}
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            fill
+            sizes="100%"
+          />
+        </div>
       )}
       <Link href={`/blog/${href}`} className="p-6">
         <div className="space-y-4 mx-5">

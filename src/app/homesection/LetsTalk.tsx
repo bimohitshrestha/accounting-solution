@@ -76,7 +76,7 @@ const social = [
 const LetsTalk: React.FC = () => {
   return (
     <div className="max-w-lvw mx-auto p-10 border-t-2 border-black mb-12">
-      <ParagraphHeader title={`Let's Talk Business`} />
+      <ParagraphHeader title={`Let's Talk Business`} containerClassName="" />
       <div className="w-full flex flex-col md:flex-row items-start justify-center gap-5 mt-8">
         <ContactDetails />
 

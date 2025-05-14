@@ -39,6 +39,9 @@ const Page = () => {
   const { TeamList, isloadingServiceList } = useAppSelector(
     (state) => state.team
   );
+  useEffect(() => {
+    dispatch(getTeamList());
+  }, []);
 
   const getSocialIcon = (platform: string) => {
     switch (platform.toLowerCase()) {
@@ -54,10 +57,6 @@ const Page = () => {
         return null;
     }
   };
-
-  useEffect(() => {
-    dispatch(getTeamList());
-  }, []);
 
   if (isloadingServiceList) {
     return <PreLoader name="Loading team members...." />;

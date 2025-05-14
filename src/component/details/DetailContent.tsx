@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 import { MdCheckBox } from "react-icons/md";
 
@@ -69,11 +70,14 @@ const DetailContent: React.FC<Props> = ({
         </ul>
       )}
 
-      <div className="pt-4">
-        <img
+      <div className="relative w-full h-64 sm:h-80 md:h-[500px] pt-4">
+        <Image
           src={imageSrc}
           alt={imageAlt || "Beauty industry illustration"}
-          className="w-full h-64 sm:h-80 md:h-[500px] object-cover object-center rounded-md shadow-md"
+          className="object-cover object-center rounded-md shadow-md"
+          fill
+          sizes="100vw"
+          priority
         />
       </div>
     </div>

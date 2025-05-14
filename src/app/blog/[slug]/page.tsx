@@ -1,13 +1,12 @@
 import React from "react";
 import ImageHeader from "@/component/backgroundImageHeader/ImageHeader";
-
 import Image from "next/image";
 import Link from "next/link";
-
 import { IoArrowBack } from "react-icons/io5";
 import { FaTwitter, FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { Metadata } from "next";
 import { BlogItem } from "@/lib/features/blog/blogInterface";
+
 type tParams = Promise<{ slug: string }>;
 
 export async function generateMetadata({
@@ -16,7 +15,6 @@ export async function generateMetadata({
   params: tParams;
 }): Promise<Metadata> {
   const param = await params;
-
   const response = await fetch("http://192.168.100.66:8080/api/blogs/");
   const blogs: BlogItem[] = await response.json();
   const blog = blogs.find((item) => item.slug === param.slug);
@@ -29,19 +27,29 @@ export async function generateMetadata({
   }
 
   return {
-    title: blog.meta_title ? blog.meta_title : "Blog Post",
-    description: blog.meta_description ?? "Read this interesting blog post.",
+    title: blog.meta_title || "Blog Post",
+    description: blog.meta_description || "Read this interesting blog post.",
     openGraph: {
-      title: blog.title ?? "Blog Post",
-      description: blog.meta_description ?? "Read this interesting blog post.",
+      title: blog.title || "Blog Post",
+      description: blog.meta_description || "Read this interesting blog post.",
       images: [blog.hero_image || ""],
     },
     twitter: {
       title: blog.title ?? "Blog Post",
-      description: blog.meta_description ?? "Read this interesting blog post.",
+      description: blog.meta_description || "Read this interesting blog post.",
       images: [blog.hero_image || ""],
     },
   };
+}
+
+function parseContent(html: string): string {
+  return html.replace(/<oembed url="(.*?)"><\/oembed>/g, (match, url) => {
+    if (url.includes("youtube.com")) {
+      const videoId = new URL(url).searchParams.get("v");
+      return `<div class="video-embed-container"><iframe width="100%" height="600" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe></div>`;
+    }
+    return match;
+  });
 }
 
 export default async function Page({
@@ -50,15 +58,12 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const param = await params;
-
   const data = await fetch("http://192.168.100.66:8080/api/blogs/");
   const posts: BlogItem[] = await data.json();
-
   const blog = posts.find((item) => item.slug === param.slug);
 
-  if (!blog) {
-    return "blog not found";
-  }
+  if (!blog) return "Blog not found";
+
   const getSocialIcon = (platform: string) => {
     switch (platform.toLowerCase()) {
       case "twitter":
@@ -73,16 +78,18 @@ export default async function Page({
         return null;
     }
   };
+
   return (
     <div className="bg-gray-50 min-h-screen pb-12">
       <ImageHeader
         title={blog?.title ?? "unable to load title"}
         image="/accountant.jpg"
       />
-      <div className="max-w-7xl mx-auto px-4 mt-12">
-        <div className="bg-white p-8 rounded-lg shadow-xl">
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+        <div className="bg-white p-4 sm:p-6 lg:p-8 rounded-lg shadow-xl">
           {blog?.hero_image && (
-            <div className="relative w-full h-[600px] mb-6">
+            <div className="relative w-full h-64 sm:h-96 lg:h-[600px] mb-6">
               <Image
                 src={blog.hero_image}
                 alt={blog.hero_image_alt_text || "Blog Hero Image"}
@@ -94,7 +101,7 @@ export default async function Page({
             </div>
           )}
 
-          <h1 className="text-4xl font-semibold text-gray-800 mb-4">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-800 mb-4">
             {blog?.title}
           </h1>
 
@@ -102,7 +109,7 @@ export default async function Page({
             <span>Category: {blog?.category?.name}</span>
           </p>
 
-          <div className="flex items-center space-x-6 mb-8 border-b pb-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-8 border-b pb-6">
             <div>
               <p className="font-medium text-gray-800">{blog?.author.name}</p>
               <p className="text-xs text-gray-400">
@@ -114,13 +121,13 @@ export default async function Page({
           <div
             className="prose max-w-none mb-8 text-gray-700 custom-section-container"
             dangerouslySetInnerHTML={{
-              __html: blog?.content ?? "unable to find content",
+              __html: parseContent(blog?.content ?? "unable to find content"),
             }}
           />
 
           {blog.highlights && (
             <div
-              className="bg-gray-100 p-6 rounded-lg mb-8"
+              className=" custom-section-container"
               dangerouslySetInnerHTML={{ __html: blog.highlights }}
             />
           )}
@@ -140,12 +147,13 @@ export default async function Page({
               </div>
             </div>
           )}
+
           {blog.author?.social_media?.length > 0 && (
-            <div className="mt-8 pt-6 border-t-2 border-gray-200 bg-gray-50 rounded-lg p-6 shadow-lg">
-              <p className="text-xl font-semibold text-gray-800 mb-4">
+            <div className="mt-8 pt-6 border-t-2 border-gray-200 bg-gray-50 rounded-lg p-4 sm:p-6 shadow-lg">
+              <p className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">
                 Connect with {blog.author.name}:
               </p>
-              <div className="flex flex-wrap gap-6 justify-start">
+              <div className="flex flex-wrap gap-4 sm:gap-6">
                 {blog.author.social_media.map((social: any) => (
                   <Link
                     key={social.id}
@@ -154,10 +162,10 @@ export default async function Page({
                     rel="noopener noreferrer"
                     className="flex items-center space-x-3 p-3 bg-white rounded-full border border-gray-300 shadow-md transition-all duration-300 hover:bg-blue-100 hover:border-blue-500 hover:scale-105"
                   >
-                    <div className="flex items-center justify-center w-8 h-8  rounded-full text-white">
+                    <div className="flex items-center justify-center w-8 h-8 rounded-full">
                       {getSocialIcon(social.platform)}
                     </div>
-                    <span className="text-md text-gray-700 font-medium">
+                    <span className="text-sm sm:text-md text-gray-700 font-medium">
                       {social.platform}
                     </span>
                   </Link>
@@ -169,9 +177,9 @@ export default async function Page({
           <div className="mt-8 pt-6 border-t">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-3 text-blue-600 hover:text-blue-800"
+              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 text-sm sm:text-base"
             >
-              <IoArrowBack />
+              <IoArrowBack className="w-4 h-4" />
               Back to all posts
             </Link>
           </div>

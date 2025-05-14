@@ -25,7 +25,7 @@ const Page: React.FC = () => {
           subtitle="You need the proper support with specific industry expertise to succeed in today's real estate market. This is why more and more real estate companies are turning to the TAS team in Bayswater."
           paragraphs={[
             "Whatever type of agency you run, it's essential to have an accounting system that keeps track of your finances. Although real estate bookkeepers often have simple tasks, they must ensure that every item is recorded correctly.",
-            "In the case of choosing a property tax accountant in Melbourne for your company, there is no one-size-fits-all approach. To meet the needs of every business and situation, a customized approach is necessary. Therefore, we ensure TAS Tailored Accounting Solutions never offers you standard, typical products that don't reflect the nature of your business.",
+            "In the case of choosing a property tax accountant in Melbourne for your company, there is no one-size-fits-all approach. To meet the needs of every business and situation, a customized approach is necessary. Therefore, we ensure CAS Chartered Accounting Solutions never offers you standard, typical products that don't reflect the nature of your business.",
             "Taking care of the details is essential to us.",
             "A key characteristic of our bookkeepers for property managers is their attention to detail. It doesn't matter how big or small your team is. We always ask the right questions and show an interest in your business.",
             "Aside from continually educating our clients and maintaining compliance where it is most important, we have worked hard to create a trustworthy range of services, so they always benefit financially from our guidance.",
@@ -43,7 +43,7 @@ const Page: React.FC = () => {
           description="We also understand the business challenges you face in the real estate industry and complex tax compliance and employment regulations. As a service to our restaurant and hotel owners, we provide the following:"
           bullets={bullets}
           paragraph={[
-            "With TAS Tailored Accounting Solutions in Bayswater and Yarra Ranges, we guide you through every step of your real estate business lifecycle. As a result, we add real value to your business as accountants all year round - not just at tax time.",
+            "With CAS Chartered Accounting Solutions in Bayswater and Yarra Ranges, we guide you through every step of your real estate business lifecycle. As a result, we add real value to your business as accountants all year round - not just at tax time.",
           ]}
           //   boldDescription={[
           //     "Get in touch to learn more about our accounting services for gyms, health clubs and personal trainers. We're based in Bayswater, but we work with fitness professionals across all suburbs of the Yarra Valley and Outer Eastern Suburbs.",

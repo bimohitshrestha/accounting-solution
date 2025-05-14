@@ -142,12 +142,12 @@ body {
   border-radius: 6px;
 }
 
-.custom-section-container > p:first-of-type {
+/* .custom-section-container > p:first-of-type {
   color: #3949ab;
   font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.8;
-}
+} */
 
 .custom-section-container p {
   color: #101828;
@@ -182,8 +182,59 @@ body {
   margin: 1.5rem 0;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
 }
+.custom-section-container ol {
+  list-style: none;
+  background-color: #f0f4f8;
+  border-left: 5px solid #5c6bc0;
+  border-radius: 0 10px 10px 0;
+  padding: 1.75rem 2rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+}
+.custom-section-container ol li {
+  margin-left: 10px;
+  padding-left: 10px;
+}
+
+.custom-section-container figure{
+  width: 100%;
+  height: 500px;
+ 
+
+  border-radius: 0.5rem;
+}
+
+
+.custom-section-container a {
+  color: #e63946;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.25s ease, text-decoration 0.25s ease;
+  padding-left: 16px;
+  position: relative;
+}
+
+.custom-section-container a::before {
+ 
+  position: absolute;
+  left: 0;
+  color: #e63946;
+  transition: transform 0.25s ease;
+}
+
+.custom-section-container a:hover {
+  color: #1d3557;
+  text-decoration: underline;
+}
+
+.custom-section-container a:hover::before {
+  transform: translateX(4px);
+  color: #1d3557;
+}
+
 
 .custom-section-container ul li {
+  list-style: none !important;
   margin-bottom: 1.2rem;
   padding-left: 20px; 
   position: relative;
@@ -196,13 +247,18 @@ body {
   content: '';
   position: absolute;
   left: 0;
-  top: 0.65rem;
-  width: 12px;
-  height: 12px;
+  top: 50%;
+  transform:translateY(-50%) ;
+  width: 8px;
+  height: 8px;
   background-color: #5c6bc0;
   border-radius: 50%;
 }
 
+custom-section-container ul li::marker{
+  /* list-style: none !important; */
+  display: none !important;
+} 
 
 .custom-section-container ul li:hover {
   color: #1a237e;
@@ -271,7 +327,9 @@ body {
   .custom-section-container h1 {
     font-size: 1.75rem;
   }
-
+ .custom-section-container h3 {
+    font-size: 1.75rem;
+  }
   .custom-section-container > p:first-of-type,
   .custom-section-container p {
     font-size: 0.95rem;

@@ -15,7 +15,7 @@ const ParagraphHeader = ({
 }: ParagraphHeaderInterface) => {
   return (
     <div
-      className={`w-full px-4 py-8 text-gray-800 md:px-8 lg:px-16 space-y-6 md:space-y-8 ${containerClassName}`}
+      className={`w-full px-4 py-6 text-gray-800 md:px-8 lg:px-16 space-y-6 md:space-y-4 ${containerClassName}`}
     >
       <div className="space-y-2 md:space-y-3 text-center">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-level">

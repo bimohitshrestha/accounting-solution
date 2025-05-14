@@ -35,9 +35,9 @@ const Page: React.FC = () => {
           title="Information Technology Accountants"
           subtitle="We understand that your tax requirements are complex, but we simplify it and amplify your returns."
           paragraphs={[
-            "Our accountants aren't just your average accountants. The goal of TAS Tailored Accounting Solutions is to become a true partner in your IT business - delivering the best results possible.",
+            "Our accountants aren't just your average accountants. The goal of CAS  Chartered Accounting Solutions is to become a true partner in your IT business - delivering the best results possible.",
             "Getting to know you requires listening, investigating, and investigating some more. Every cent you earn is maximized by our IT accountants.",
-            "You need to manage your finances in a way that allows you to focus on growth, rather than compliance, whether you have a job or own your own IT startup business. And here is where we at TAS Tailored Accounting Solutions we can help.",
+            "You need to manage your finances in a way that allows you to focus on growth, rather than compliance, whether you have a job or own your own IT startup business. And here is where we at CAS Chartered Accounting Solutions we can help.",
           ]}
           //   boldDescription={[
           //     "Our hospitality accountants will help simplify your finances, minimize your tax obligations, and manage your cash flow.",

@@ -47,7 +47,7 @@ const Page: React.FC = () => {
             title="Call us today on 9849909999"
             icon={<IoIosCall />}
             requiredIcon
-            className="w-full"
+            // className="w-full"
           />
         </div>
         <HereForYou />

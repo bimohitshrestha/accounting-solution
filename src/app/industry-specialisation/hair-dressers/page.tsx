@@ -38,7 +38,7 @@ const Page: React.FC = () => {
           bullets={bullets}
           paragraph={[
             "At TAS, your business success is our priority, and we offer a range of accounting, taxation and business coaching services for your hairdressing salon.",
-            "Contact the TAS Tailored Accounting Solutions team to set up a time to discuss your business requirements; located in Bayswater, Victoria, our firm is here to support you.",
+            "Contact the  Chartered Accounting Solutions team to set up a time to discuss your business requirements; located in Bayswater, Victoria, our firm is here to support you.",
           ]}
         />
 

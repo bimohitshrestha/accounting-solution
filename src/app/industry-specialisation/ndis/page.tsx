@@ -31,7 +31,7 @@ const Page: React.FC = () => {
       <div className="max-w-lvw mx-auto px-6 py-6">
         <DetailContent
           title="NDIS accounting and taxation firm"
-          subtitle="TAS Tailored Accounting Solutions is an accounting firm based in Bayswater. As a specialist NDIS accounting and taxation firm, we offer a range of services including company registration, GST registration, company setup, accounting, bookkeeping, tax accounting and other services."
+          subtitle="CAS Chartered Accounting Solutions is an accounting firm based in Bayswater. As a specialist NDIS accounting and taxation firm, we offer a range of services including company registration, GST registration, company setup, accounting, bookkeeping, tax accounting and other services."
           paragraphs={[
             "The operation and management of any business is not an easy task, but NDIS business owners have some unique challenges while meeting the needs of physically demanding jobs.",
             "The NDIS Disability Support industry is a complex one, and we strive to assist our clients in this industry to minimise their worries about Bookkeeping, Taxation and Compliance, so they can focus on what they do best, which is running their business.",

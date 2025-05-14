@@ -9,10 +9,10 @@ const Introduces = () => {
   };
 
   return (
-    <section className="w-full px-4 py-8 text-gray-800 md:px-8 lg:px-16 space-y-6 md:space-y-8">
+    <section className="w-full px-4 py-8 text-gray-800 md:px-8 lg:px-16 space-y-6 md:space-y-8 mb-12">
       <ParagraphHeader
         title="Let Us Introduce Ourselves"
-        description="Looking for top-notch support for your accounting, taxation, and bookkeeping needs? Look no further than Tailored Accounting Solutions! Based in Bayswater, nestled in Melbourne's Eastern suburbs, we proudly serve clients across the entire Melbourne area."
+        description="Looking for top-notch support for your accounting, taxation, and bookkeeping needs? Look no further than Chartered Accounting Solutions! Based in Bayswater, nestled in Melbourne's Eastern suburbs, we proudly serve clients across the entire Melbourne area."
         className="font-light text-gray-900"
         containerClassName="space-y-2 md:space-y-3"
       />
