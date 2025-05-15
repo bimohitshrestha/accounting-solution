@@ -11,10 +11,13 @@ import {
   FaInstagram,
   FaLinkedin,
   FaViber,
-} from "react-icons/fa"; // You can import the necessary icons
+  FaWhatsapp,
+} from "react-icons/fa";
 import { BiPhone } from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
 import { BsWhatsapp } from "react-icons/bs";
+import WhatsAppOptions from "../WhatsAppAction/WhatsAppOption";
+import ViberOptions from "../WhatsAppAction/ViberOption";
 
 interface SocialLink {
   href: string;
@@ -48,18 +51,18 @@ const ContactDetails: React.FC = () => {
       icon: <MdEmail className="w-6 h-6 text-rose-600" />,
       value: organization?.email,
     },
-    {
-      href: `https://web.whatsapp.com/send?phone=${organization?.phone_number1}`,
-      icon: <BsWhatsapp className="w-6 h-6 text-green-600" />,
+    // {
+    //   href: `https://web.whatsapp.com/send?phone=${organization?.phone_number1}`,
+    //   icon: <BsWhatsapp className="w-6 h-6 text-green-600" />,
 
-      value: organization?.whatsapp,
-    },
-    {
-      href: `viber://chat?number=${organization?.viber}`,
-      icon: <FaViber className="w-6 h-6 text-blue-600" />,
+    //   value: organization?.whatsapp,
+    // },
+    // {
+    //   href: `viber://chat?number=${organization?.viber}`,
+    //   icon: <FaViber className="w-6 h-6 text-blue-600" />,
 
-      value: organization?.viber,
-    },
+    //   value: organization?.viber,
+    // },
   ];
 
   const social: Social[] = organization?.social_media.map((media) => {
@@ -78,6 +81,11 @@ const ContactDetails: React.FC = () => {
           <FaInstagram className="w-8 h-8 text-rose-600 hover:text-rose-700" />
         );
         break;
+      // case "whatsapp":
+      //   icon = (
+      //     <FaWhatsapp className="w-8 h-8 text-green-600 hover:text-green-700" />
+      //   );
+      //   break;
       case "linkedin":
         icon = (
           <FaLinkedin className="w-8 h-8 text-blue-500 hover:text-blue-600" />
@@ -99,7 +107,6 @@ const ContactDetails: React.FC = () => {
       <h5 className="text-level capitalize text-2xl font-semibold mb-6 underline">
         {organization?.name || "Organization Name"}
       </h5>
-
       {socialLinks?.map((data, index) => (
         <Link
           key={index}
@@ -115,6 +122,11 @@ const ContactDetails: React.FC = () => {
         </Link>
       ))}
 
+      <WhatsAppOptions
+        phoneNumber={organization?.whatsapp}
+        message="Hi, I'm interested in your services!"
+      />
+      <ViberOptions phoneNumber={organization?.viber} />
       <div className="flex flex-wrap justify-center gap-3 mt-15">
         {social?.map((link) => (
           <Link
