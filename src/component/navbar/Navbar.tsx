@@ -3,11 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import React, { ReactNode, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { BsWhatsapp } from "react-icons/bs";
 import {
   FaFacebook,
   FaLinkedin,
-  FaPhone,
   FaBars,
   FaTimes,
   FaTwitter,
@@ -23,6 +21,7 @@ import { getServiceList } from "@/lib/features/services/serviceAction";
 import { BiPhone } from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
 import WhatsAppOptions from "../WhatsAppAction/WhatsAppOption";
+import { BsWhatsapp } from "react-icons/bs";
 
 interface SocialLink {
   href: string;
@@ -49,7 +48,7 @@ const Navbar = () => {
 
   useEffect(() => {
     dispatch(getServiceList());
-  }, []);
+  }, [dispatch]);
 
   const socialLinks: SocialLink[] = [
     {
@@ -135,10 +134,9 @@ const Navbar = () => {
           <Image src="/next.svg" alt="Logo" width={120} height={60} />
         </Link>
 
-        {/* Right section: social icons + WhatsApp option */}
         <div className="hidden lg:flex flex-col items-end gap-2">
           <div className="flex gap-3 mb-2">
-            {social?.map((link) => (
+            {social.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
@@ -165,6 +163,7 @@ const Navbar = () => {
         </button>
       </div>
 
+      {/* Large screen menu */}
       <div className="hidden lg:flex justify-center gap-6 mt-4">
         {navItems.map((item) => {
           const subItems = getSubItems(item);
@@ -221,67 +220,61 @@ const Navbar = () => {
         })}
       </div>
 
+      {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="lg:hidden px-4 pb-4 space-y-4">
           {navItems.map((item) => {
             const subItems = getSubItems(item);
             return (
               <div key={item.name} className="mb-2">
-                <button
-                  onClick={() => toggleSubMenu(item.name)}
-                  className="w-full flex justify-between items-center px-4 py-2 border border-black bg-level text-white hover:bg-white hover:text-black transition"
-                >
-                  <span>{item.name}</span>
-                  {item.subChild !== false && (
-                    <span>
-                      {openMenu === item.name ? (
-                        <IoIosArrowUp />
-                      ) : (
-                        <IoIosArrowDown />
-                      )}
-                    </span>
-                  )}
-                </button>
+                {item.subChild === false ? (
+                  <Link
+                    href={item.href || "#"}
+                    className="block w-full text-left px-4 py-2 border border-black bg-level text-white hover:bg-white hover:text-black transition"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                ) : (
+                  <>
+                    <button
+                      onClick={() => toggleSubMenu(item.name)}
+                      className="w-full flex justify-between items-center px-4 py-2 border border-black bg-level text-white hover:bg-white hover:text-black transition"
+                    >
+                      <span>{item.name}</span>
+                      <span>
+                        {openMenu === item.name ? (
+                          <IoIosArrowUp />
+                        ) : (
+                          <IoIosArrowDown />
+                        )}
+                      </span>
+                    </button>
 
-                {openMenu === item.name && subItems && (
-                  <div className="bg-white text-black shadow-lg mt-1 w-full">
-                    {subItems.map((sub: any, index: number) => (
-                      <Link
-                        key={index}
-                        href={sub.href}
-                        className={`block px-6 py-3 text-sm border-b hover:bg-gray-100 ${
-                          isActive(sub.href) ? "bg-white font-semibold" : ""
-                        }`}
-                      >
-                        {sub.name}
-                      </Link>
-                    ))}
-                  </div>
+                    {openMenu === item.name && subItems && (
+                      <div className="bg-white text-black shadow-lg mt-1 w-full">
+                        {subItems.map((sub: any, index: number) => (
+                          <Link
+                            key={index}
+                            href={sub.href}
+                            className={`block px-6 py-3 text-sm border-b hover:bg-gray-100 ${
+                              isActive(sub.href) ? "bg-white font-semibold" : ""
+                            }`}
+                            onClick={() => setMobileMenuOpen(false)}
+                          >
+                            {sub.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
             );
           })}
 
-          <p className="flex flex-col items-center text-black text-sm gap-2 mt-4">
-            {socialLinks
-              ?.filter((data) => data.href.includes("whatsapp"))
-              .map((data, index) => (
-                <Link
-                  key={index}
-                  href={data.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={data.value}
-                  className="flex items-center gap-2 text-lg"
-                >
-                  {data.icon}
-                  <span>{data.value}</span>
-                </Link>
-              ))}
-          </p>
-
           <div className="mt-4 flex justify-center gap-4">
-            {social?.map((link) => (
+            {social.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
@@ -294,6 +287,24 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
+
+          <p className="flex items-center text-black text-sm gap-1">
+            {socialLinks
+              ?.filter((data) => data.href.includes("whatsapp"))
+              .map((data, index) => (
+                <Link
+                  key={index}
+                  href={data.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={data.value}
+                  className="flex items-start gap-4 text-lg justify-center mb-2"
+                >
+                  {data.icon}
+                  <span>{data.value}</span>
+                </Link>
+              ))}
+          </p>
         </div>
       )}
     </div>

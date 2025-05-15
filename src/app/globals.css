@@ -280,6 +280,7 @@ custom-section-container ul li::marker{
   .custom-section-container img {
     max-height: 500px;
   }
+   
 }
 
 @media (max-width: 992px) {
@@ -298,6 +299,8 @@ custom-section-container ul li::marker{
   .custom-section-container img {
     max-height: 450px;
   }
+ 
+  
 }
 
 @media (max-width: 768px) {
@@ -341,5 +344,17 @@ custom-section-container ul li::marker{
 
   .custom-section-container ul {
     padding: 1.25rem 1.5rem;
+  }
+  .custom-section-container a {
+    font-size: 0.95rem;
+    padding-left: 0.75rem;
+  }
+
+  .custom-section-container a:hover::before {
+    transform: translateX(0.2rem);
+  }
+  .custom-section-container iframe{
+    width: 100%;
+    height: 400px;
   }
 }

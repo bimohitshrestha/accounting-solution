@@ -21,12 +21,12 @@ const Page = () => {
   }
 
   return (
-    <div className="bg-gray-100 min-h-screen pb-12">
+    <div className="bg-gray-100 min-h-screen pb-12 ">
       <ImageHeader title="Newsletter" image="/accountant.jpg" />
 
       <Subscriber />
 
-      <div className="max-w-7xl mx-auto  py-10">
+      <div className="max-w-7xl mx-auto  py-10 p-6 md:p-0">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {NewsList.map((news, index) => (
             <Link href={`/newsletter/${news.slug}`} key={index}>

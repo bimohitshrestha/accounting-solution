@@ -23,7 +23,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div className=" flex flex-col  mb-12">
+    <div className=" flex flex-col  ">
       {/* <h1 className="text-4xl text-center text-level  py-4">
         Chartered Accounting Solutions
       </h1> */}
@@ -37,10 +37,15 @@ const HeroSection = () => {
           }}
         />
 
-        <div className="absolute inset-0 flex flex-col justify-end items-center text-white px-4">
-          <p className="text-2xl md:text-3xl lg:text-4xl text-center font-light mb-8">
-            Your Accounting Partner, Whatever Your Business
-          </p>
+        <div className="relative w-full h-full">
+          <div className="absolute inset-0 bg-black/40 z-0"></div>
+
+          <div className="relative z-10 w-full flex flex-col justify-end items-center h-full  px-6 py-12 text-center">
+            <p className="text-white text-xl md:text-xl lg:text-3xl font-light ">
+              Your Trusted Accounting Partner — No Matter the Size of Your
+              Business
+            </p>
+          </div>
         </div>
       </div>
 

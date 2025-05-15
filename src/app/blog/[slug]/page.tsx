@@ -160,7 +160,7 @@ export default async function Page({
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-3 p-3 bg-white rounded-full border border-gray-300 shadow-md transition-all duration-300 hover:bg-blue-100 hover:border-blue-500 hover:scale-105"
+                    className="flex items-center p-3 bg-white rounded-full border border-gray-300 shadow-md transition-all duration-300 hover:bg-blue-100 hover:border-blue-500 hover:scale-105"
                   >
                     <div className="flex items-center justify-center w-8 h-8 rounded-full">
                       {getSocialIcon(social.platform)}

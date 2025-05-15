@@ -1,5 +1,4 @@
 import ParagraphHeader from "@/component/header/ParagraphHeader";
-import Image from "next/image";
 import React from "react";
 import { AiOutlineSolution } from "react-icons/ai";
 import { FaHandshake, FaRegLightbulb, FaUserFriends } from "react-icons/fa";
@@ -30,28 +29,28 @@ const paragraphData = [
 
 const WhyChooseUs = () => {
   return (
-    <section className="w-full  px-4  mb-12 ">
+    <section className="w-full px-4 mb-12">
       <ParagraphHeader title="Why Businesses Choose Us" />
 
       <div
-        className="flex flex-col md:flex-row items-stretch  mt-10  min-h-[600px] bg-cover bg-center p-6 "
+        className="flex flex-col md:flex-row items-stretch mt-10 min-h-[600px] bg-cover bg-center p-4 sm:p-6 md:p-8"
         style={{
           backgroundImage: `url(/accountant.jpg)`,
         }}
       >
-        <div className="md:w-1/2 text-center md:text-left h-full bg-white bg-opacity-90 backdrop-blur-md p-8 flex flex-col justify-center ">
+        <div className="md:w-1/2 w-full text-center md:text-left h-full bg-white bg-opacity-90 backdrop-blur-md p-6 sm:p-8 md:p-10 flex flex-col justify-center">
           <div className="relative z-10">
             {paragraphData.map((item, index) => {
               const Icon = item.icon;
               return (
-                <div key={index} className="mb-10">
-                  <div className="flex items-start justify-start gap-8">
-                    <Icon className="text-black w-12 h-12" />
-                    <div className="flex flex-col ">
-                      <h2 className="text-xl font-semibold text-level mb-4">
+                <div key={index} className="mb-8 last:mb-0">
+                  <div className="flex items-start gap-6 sm:gap-8">
+                    <Icon className="text-black w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0" />
+                    <div className="flex flex-col max-w-full sm:max-w-md">
+                      <h2 className="text-lg sm:text-xl font-semibold text-level mb-2 sm:mb-4">
                         {item.heading}
                       </h2>
-                      <p className="text-gray-700 text-base max-w-md">
+                      <p className="text-gray-700 text-sm sm:text-base">
                         {item.text}
                       </p>
                     </div>

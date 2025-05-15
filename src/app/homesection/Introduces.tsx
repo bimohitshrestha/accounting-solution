@@ -17,7 +17,7 @@ const Introduces = () => {
         containerClassName="space-y-2 md:space-y-3"
       />
 
-      <div className="space-y-4 text-sm md:text-base text-gray-900 font-light">
+      <div className="px-4 py-1  md:px-8 lg:px-16 space-y-6 md:space-y-4 text-gray-900 font-light">
         <p>
           {`  With over 25 years of experience in the accounting and bookkeeping
           industry, our dedicated team offers professional expertise you can
@@ -39,7 +39,7 @@ const Introduces = () => {
         </p>
       </div>
 
-      <div className="pt-4 text-center">
+      <div className=" text-center px-4 py-1  md:px-8 lg:px-16 space-y-6 md:space-y-1">
         <ButtonText
           title="Learn More"
           onClick={handleButtonClick}
