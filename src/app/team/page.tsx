@@ -22,9 +22,9 @@ import {
   FaTwitter,
   FaUserTie,
 } from "react-icons/fa";
-import { GoPlus } from "react-icons/go";
-import { LiaLinkedin } from "react-icons/lia";
 import PreLoader from "@/component/loading/PreLoader";
+import { platform } from "os";
+import { BsTwitterX } from "react-icons/bs";
 
 const industryIcons = {
   Hospitality: <ImSpoonKnife className="w-6 h-6" />,
@@ -36,9 +36,10 @@ const industryIcons = {
 
 const Page = () => {
   const dispatch = useAppDispatch();
-  const { TeamList, isloadingServiceList } = useAppSelector(
+  const { TeamList, isloadingServiceList, isError } = useAppSelector(
     (state) => state.team
   );
+
   useEffect(() => {
     dispatch(getTeamList());
   }, []);
@@ -46,7 +47,7 @@ const Page = () => {
   const getSocialIcon = (platform: string) => {
     switch (platform.toLowerCase()) {
       case "twitter":
-        return <FaTwitter className="w-5 h-5 text-black" />;
+        return <BsTwitterX className="w-5 h-5 text-black" />;
       case "facebook":
         return <FaFacebook className="w-5 h-5 text-blue-500" />;
       case "linkedin":
@@ -61,14 +62,16 @@ const Page = () => {
   if (isloadingServiceList) {
     return <PreLoader name="Loading team members...." />;
   }
-  // {
-  //   isloadingServiceList && (
-  //     <div className="p-8 text-center text-gray-500">
-  //       Loading team members...
-  //     </div>
-  //   );
-  // }
 
+  if (isError) {
+    return (
+      <div className="p-8 text-center text-red-600">
+        <span className="text-xl font-semibold">
+          Failed to load team. Please try again later.
+        </span>
+      </div>
+    );
+  }
   return (
     <div className="bg-gray-50 min-h-screen pb-12">
       <ImageHeader
@@ -95,7 +98,7 @@ const Page = () => {
               <div className="relative overflow-hidden rounded-lg shadow-md w-full">
                 <Image
                   src={member?.image || "/accountant.jpg"}
-                  alt={member?.name}
+                  alt={member?.image_alt_text}
                   width={300}
                   height={700}
                   className="object-cover hover:scale-105 transition-transform duration-300 w-full h-auto"
@@ -142,13 +145,10 @@ const Page = () => {
                       href={media.url}
                       target="_blank"
                       rel="noreferrer"
-                      className=" flex items-center gap-3 space-x-3 font-medium text-level transition-colors"
+                      className="flex items-center gap-3 font-medium text-level transition-colors"
                     >
                       {getSocialIcon(media.platform)}
-                      {media.display_name}{" "}
-                      {/* <span className="text-2xl font-bold">
-                        ({media.display_name})
-                      </span> */}
+                      {media.display_name}
                     </a>
                   </div>
                 ))}

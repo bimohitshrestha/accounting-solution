@@ -1,23 +1,23 @@
 "use client";
+
 import Link from "next/link";
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 import ButtonText from "../common/button/ButtonText";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { getOrganizationInfo } from "@/lib/features/services/serviceAction";
-import {
-  FaFacebook,
-  FaTwitter,
-  FaInstagram,
-  FaLinkedin,
-  FaViber,
-  FaWhatsapp,
-} from "react-icons/fa";
+
+import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { BiPhone } from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
-import { BsWhatsapp } from "react-icons/bs";
+import { BsTwitterX } from "react-icons/bs";
+
 import WhatsAppOptions from "../WhatsAppAction/WhatsAppOption";
 import ViberOptions from "../WhatsAppAction/ViberOption";
+import AppointmentModal from "../modal/AppointmentModal";
 
 interface SocialLink {
   href: string;
@@ -36,78 +36,85 @@ const ContactDetails: React.FC = () => {
   const dispatch = useAppDispatch();
   const organization = OrganizationList[0];
 
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+
   useEffect(() => {
     dispatch(getOrganizationInfo());
   }, []);
+
+  const handleDateSelect = (date: any) => {
+    setSelectedDate(date);
+    console.log("Selected date:", date);
+  };
+
+  const handleCloseModal = () => {
+    setShowCalendar(false);
+  };
+
+  const handleConfirmAppointment = () => {
+    if (selectedDate) {
+      console.log("Appointment confirmed for:", selectedDate);
+      // Add your appointment confirmation logic here
+      setShowCalendar(false);
+    }
+  };
 
   const socialLinks: SocialLink[] = [
     {
       href: `tel:${organization?.phone_number1 || "no number"}`,
       icon: <BiPhone className="w-6 h-6 text-green-600" />,
-      value: organization?.phone_number1,
+      value: organization?.phone_number1 || "No number",
     },
     {
       href: `mailto:${organization?.email}`,
       icon: <MdEmail className="w-6 h-6 text-rose-600" />,
-      value: organization?.email,
+      value: organization?.email || "No email",
     },
-    // {
-    //   href: `https://web.whatsapp.com/send?phone=${organization?.phone_number1}`,
-    //   icon: <BsWhatsapp className="w-6 h-6 text-green-600" />,
-
-    //   value: organization?.whatsapp,
-    // },
-    // {
-    //   href: `viber://chat?number=${organization?.viber}`,
-    //   icon: <FaViber className="w-6 h-6 text-blue-600" />,
-
-    //   value: organization?.viber,
-    // },
   ];
 
-  const social: Social[] = organization?.social_media.map((media) => {
-    let icon;
-    switch (media.platform) {
-      case "facebook":
-        icon = (
-          <FaFacebook className="w-8 h-8 text-blue-700 hover:text-blue-800" />
-        );
-        break;
-      case "twitter":
-        icon = <FaTwitter className="w-8 h-8 text-gray-800 hover:text-black" />;
-        break;
-      case "instagram":
-        icon = (
-          <FaInstagram className="w-8 h-8 text-rose-600 hover:text-rose-700" />
-        );
-        break;
-      // case "whatsapp":
-      //   icon = (
-      //     <FaWhatsapp className="w-8 h-8 text-green-600 hover:text-green-700" />
-      //   );
-      //   break;
-      case "linkedin":
-        icon = (
-          <FaLinkedin className="w-8 h-8 text-blue-500 hover:text-blue-600" />
-        );
-        break;
-      default:
-        icon = <i className="fas fa-globe" />;
-    }
+  const social: Social[] =
+    organization?.social_media?.map((media) => {
+      let icon;
+      switch (media.platform) {
+        case "facebook":
+          icon = (
+            <FaFacebook className="w-8 h-8 text-blue-500 hover:text-blue-600" />
+          );
+          break;
+        case "twitter":
+          icon = (
+            <BsTwitterX className="w-8 h-8 text-gray-700 hover:text-black" />
+          );
+          break;
+        case "instagram":
+          icon = (
+            <FaInstagram className="w-8 h-8 text-rose-500 hover:text-rose-600" />
+          );
+          break;
+        case "linkedin":
+          icon = (
+            <FaLinkedin className="w-8 h-8 text-blue-700 hover:text-blue-800" />
+          );
+          break;
+        default:
+          icon = <i className="fas fa-globe" />;
+      }
 
-    return {
-      href: media.url,
-      icon,
-      label: media.display_name,
-    };
-  });
+      return {
+        href: media.url,
+        icon,
+        label: media.display_name,
+      };
+    }) || [];
 
   return (
-    <div className="w-full md:w-1/2 flex flex-col items-start justify-start ">
+    <div className="w-full md:w-1/2 flex flex-col items-start justify-start">
       <h5 className="text-level capitalize text-2xl font-semibold mb-6 underline">
         {organization?.name || "Organization Name"}
       </h5>
-      {socialLinks?.map((data, index) => (
+
+      {socialLinks.map((data, index) => (
         <Link
           key={index}
           href={data.href}
@@ -115,7 +122,6 @@ const ContactDetails: React.FC = () => {
           rel="noopener noreferrer"
           aria-label={data.value}
           className="flex items-start gap-4 text-lg justify-center mb-2"
-          // title={data.value}
         >
           {data.icon}
           <span>{data.value}</span>
@@ -127,8 +133,9 @@ const ContactDetails: React.FC = () => {
         message="Hi, I'm interested in your services!"
       />
       <ViberOptions phoneNumber={organization?.viber} />
-      <div className="flex flex-wrap justify-center gap-3 mt-15">
-        {social?.map((link) => (
+
+      <div className="flex flex-wrap justify-center gap-3 mt-8">
+        {social.map((link) => (
           <Link
             key={link.label}
             href={link.href}
@@ -142,11 +149,32 @@ const ContactDetails: React.FC = () => {
         ))}
       </div>
 
-      <div className="flex flex-col gap-6 mt-8">
-        <Link href="/contact">
-          <ButtonText title="Full Contact List" requiredIcon={false} />
-        </Link>
-        <ButtonText title="Make Appointment" requiredIcon={false} />
+      <div className="flex flex-col gap-6 mt-10">
+        {/* <Link href="/contact"> */}
+        <ButtonText
+          title="Full Contact List"
+          requiredIcon={false}
+          link="/contact"
+        />
+        {/* </Link> */}
+
+        <div>
+          <ButtonText
+            title="Make Appointment"
+            requiredIcon={false}
+            onClick={() => setShowCalendar((prev) => !prev)}
+          />
+
+          {showCalendar && (
+            <AppointmentModal
+              isOpen={showCalendar}
+              selectedDate={selectedDate}
+              onDateChange={handleDateSelect}
+              onClose={handleCloseModal}
+              onConfirm={handleConfirmAppointment}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

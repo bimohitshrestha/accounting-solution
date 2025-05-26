@@ -151,13 +151,14 @@ const KeepingUp = () => {
       </div>
 
       <div className="flex items-center justify-center mt-6">
-        <Link href="https://www.instagram.com/" target="_blank">
-          <ButtonText
-            title="Follow Us on Instagram"
-            icon={<FaInstagram />}
-            requiredIcon
-          />
-        </Link>
+        {/* <Link href="https://www.instagram.com/" target="_blank"> */}
+        <ButtonText
+          link="https://www.instagram.com/"
+          title="Follow Us on Instagram"
+          icon={<FaInstagram />}
+          requiredIcon
+        />
+        {/* </Link> */}
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const param = await params;
 
-  const response = await fetch("http://192.168.100.66:8080/api/services/");
+  const response = await fetch("http://192.168.100.91:8088/api/services/");
   const posts: ServiceItem[] = await response.json();
   const post = posts.find((item) => item.slug === param.slug);
 
@@ -50,7 +50,7 @@ export default async function Page({
 }) {
   const param = await params;
 
-  const data = await fetch("http://192.168.100.66:8080/api/services/");
+  const data = await fetch("http://192.168.100.91:8088/api/services/");
   const posts: ServiceItem[] = await data.json();
 
   const post = posts.find((item) => item.slug === param.slug);

@@ -68,22 +68,28 @@ const Trust = () => {
               className="bg-white rounded-xl p-4 shadow-md transform hover:scale-105 transition-all duration-300 ease-in-out"
             >
               <div className="flex items-center gap-4 mb-4">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-gray-200">
-                  <Image
-                    src={testimonial.image || "/accountant.jpg"}
-                    alt={`${testimonial.client_name}'s avatar`}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+                {testimonial.image ? (
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-gray-200">
+                    <Image
+                      src={testimonial.image || "/agriculture.jpg"}
+                      alt={`${testimonial.client_name}'s avatar`}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                ) : null}
+
                 <div>
                   <h2 className="flex items-center gap-1 text-sm font-semibold text-gray-800">
                     {testimonial.client_name}
                     <FaCheckCircle className="text-blue-600" />
                   </h2>
-                  <p className="text-xs text-gray-500">
-                    {testimonial.company} •{" "}
-                    {new Date(testimonial.created_at).toLocaleDateString()}
+                  <p className="text-xs font-medium text-black mt-2">
+                    {testimonial.company}{" "}
+                    <span className="mx-2 text-gray-500 ">
+                      {" "}
+                      {new Date(testimonial.created_at).toLocaleDateString()}
+                    </span>
                   </p>
                 </div>
               </div>

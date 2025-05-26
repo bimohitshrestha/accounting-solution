@@ -8,7 +8,6 @@ import {
   FaLinkedin,
   FaBars,
   FaTimes,
-  FaTwitter,
   FaInstagram,
   FaWhatsapp,
   FaViber,
@@ -21,7 +20,7 @@ import { getServiceList } from "@/lib/features/services/serviceAction";
 import { BiPhone } from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
 import WhatsAppOptions from "../WhatsAppAction/WhatsAppOption";
-import { BsWhatsapp } from "react-icons/bs";
+import { BsTwitterX, BsWhatsapp } from "react-icons/bs";
 
 interface SocialLink {
   href: string;
@@ -45,10 +44,6 @@ const Navbar = () => {
   const organization = OrganizationList[0];
 
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(getServiceList());
-  }, [dispatch]);
 
   const socialLinks: SocialLink[] = [
     {
@@ -84,7 +79,7 @@ const Navbar = () => {
           break;
         case "twitter":
           icon = (
-            <FaTwitter className="w-8 h-8 text-gray-800 hover:text-black" />
+            <BsTwitterX className="w-8 h-8 text-gray-800 hover:text-black" />
           );
           break;
         case "instagram":
@@ -112,6 +107,10 @@ const Navbar = () => {
         label: media.display_name,
       };
     }) || [];
+
+  useEffect(() => {
+    dispatch(getServiceList());
+  }, []);
 
   const toggleSubMenu = (itemName: string) => {
     setOpenMenu(openMenu === itemName ? null : itemName);

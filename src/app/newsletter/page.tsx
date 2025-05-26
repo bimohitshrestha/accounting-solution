@@ -11,7 +11,9 @@ import Subscriber from "@/component/subscriber/Subscriber";
 
 const Page = () => {
   const dispatch = useAppDispatch();
-  const { NewsList, isloadingNewsList } = useAppSelector((state) => state.news);
+  const { NewsList, isloadingNewsList, isError } = useAppSelector(
+    (state) => state.news
+  );
   useEffect(() => {
     dispatch(getNewsList());
   }, []);
@@ -20,13 +22,23 @@ const Page = () => {
     return <PreLoader name="Loading newsletter...." />;
   }
 
+  if (isError) {
+    return (
+      <div className="p-8 text-center text-red-600">
+        <span className="text-xl font-semibold">
+          Failed to load news letter. Please try again later.
+        </span>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-gray-100 min-h-screen pb-12 ">
       <ImageHeader title="Newsletter" image="/accountant.jpg" />
 
       <Subscriber />
 
-      <div className="max-w-7xl mx-auto  py-10 p-6 md:p-0">
+      <div className="max-w-7xl mx-auto  py-10 p-6 md:p-0 mt-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {NewsList.map((news, index) => (
             <Link href={`/newsletter/${news.slug}`} key={index}>

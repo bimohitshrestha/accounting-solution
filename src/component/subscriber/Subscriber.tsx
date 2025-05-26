@@ -81,9 +81,9 @@ const Subscriber = () => {
 
   return (
     <>
-      <div className="w-full bg-slate-100 py-6 p-6 md:p-0">
+      <div className="w-full bg-slate-100 py-6 p-6 md:p-0 ">
         <div className="max-w-7xl mx-auto">
-          <p className="text-blue-500 text-lg font-medium mt-2 text-center sm:text-left">
+          <p className="text-blue-500 text-lg font-medium mt-4 text-center sm:text-left ">
             Subscribe to our Newsletter and Weekly Blog
           </p>
 

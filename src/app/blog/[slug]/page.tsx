@@ -6,6 +6,7 @@ import { IoArrowBack } from "react-icons/io5";
 import { FaTwitter, FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { Metadata } from "next";
 import { BlogItem } from "@/lib/features/blog/blogInterface";
+import { BsTwitterX } from "react-icons/bs";
 
 type tParams = Promise<{ slug: string }>;
 
@@ -15,7 +16,7 @@ export async function generateMetadata({
   params: tParams;
 }): Promise<Metadata> {
   const param = await params;
-  const response = await fetch("http://192.168.100.66:8080/api/blogs/");
+  const response = await fetch("http://192.168.100.91:8088/api/blogs/");
   const blogs: BlogItem[] = await response.json();
   const blog = blogs.find((item) => item.slug === param.slug);
 
@@ -58,7 +59,7 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const param = await params;
-  const data = await fetch("http://192.168.100.66:8080/api/blogs/");
+  const data = await fetch("http://192.168.100.91:8088/api/blogs/");
   const posts: BlogItem[] = await data.json();
   const blog = posts.find((item) => item.slug === param.slug);
 
@@ -67,7 +68,7 @@ export default async function Page({
   const getSocialIcon = (platform: string) => {
     switch (platform.toLowerCase()) {
       case "twitter":
-        return <FaTwitter className="w-5 h-5 text-black" />;
+        return <BsTwitterX className="w-5 h-5 text-black" />;
       case "facebook":
         return <FaFacebook className="w-5 h-5 text-blue-500" />;
       case "linkedin":
