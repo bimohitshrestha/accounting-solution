@@ -54,14 +54,15 @@ const Page: React.FC = () => {
         />
 
         <div className=" flex items-center justify-center py-6 mx-6">
-          <Link href="/contact">
-            <ButtonText
-              title="Call us today on 9849909999"
-              icon={<IoIosCall />}
-              requiredIcon
-              className="w-full"
-            />
-          </Link>
+          {/* <Link href="/contact"> */}
+          <ButtonText
+            title="Call us today on 9849909999"
+            icon={<IoIosCall />}
+            requiredIcon
+            link="/contact"
+            className="w-full"
+          />
+          {/* </Link> */}
         </div>
         <HereForYou />
       </div>
