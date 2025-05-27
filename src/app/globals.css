@@ -263,6 +263,29 @@ custom-section-container ul li::marker{
 .custom-section-container ul li:hover {
   color: #1a237e;
 }
+ .nepali-datepicker {
+          width: 100% !important;
+          height: 100px !important;
+          
+        }
+
+        .nepali-datepicker table {
+          table-layout: fixed !important;
+          width: 100% !important;
+          height: 100px !important;
+          color: white;
+
+        }
+
+        .nepali-datepicker option{
+          height: 100px !important;
+        }
+
+        .nepali-datepicker th,
+        .nepali-datepicker td {
+          width: 14.28% !important;
+          text-align: center;
+        }
 
 @media (max-width: 1200px) {
   .custom-section-container {

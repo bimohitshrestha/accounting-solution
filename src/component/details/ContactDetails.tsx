@@ -48,6 +48,10 @@ const ContactDetails: React.FC = () => {
     console.log("Selected date:", date);
   };
 
+  // const handleDateSelect = (bsDate: any) => {
+  //   setSelectedDate(bsDate);
+  // };
+
   const handleCloseModal = () => {
     setShowCalendar(false);
   };
